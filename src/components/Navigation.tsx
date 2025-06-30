@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { Menu, X, Trophy, Calendar, Users } from 'lucide-react';
 
 const Navigation = () => {
@@ -55,21 +54,6 @@ const Navigation = () => {
             })}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button 
-              variant="outline"
-              className="border-primary/50 text-primary hover:bg-primary/10 font-orbitron"
-            >
-              Login
-            </Button>
-            <Button 
-              className="bg-primary hover:bg-primary/90 font-orbitron font-bold glow-effect"
-            >
-              Register
-            </Button>
-          </div>
-
           {/* Mobile menu button */}
           <button
             className="md:hidden text-foreground"
@@ -97,19 +81,6 @@ const Navigation = () => {
                   </a>
                 );
               })}
-              <div className="flex flex-col gap-2 px-3 py-2">
-                <Button 
-                  variant="outline"
-                  className="border-primary/50 text-primary hover:bg-primary/10 font-orbitron w-full"
-                >
-                  Login
-                </Button>
-                <Button 
-                  className="bg-primary hover:bg-primary/90 font-orbitron font-bold w-full"
-                >
-                  Register
-                </Button>
-              </div>
             </div>
           </div>
         )}
