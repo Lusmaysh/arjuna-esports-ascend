@@ -7,11 +7,11 @@ import { Trophy, Users, DollarSign, Calendar } from 'lucide-react';
 const tournaments = [
   {
     id: 1,
-    title: "ARJUNA CHAMPIONSHIP 2024",
-    game: "Valorant",
-    prizePool: "$100,000",
-    participants: "64 Teams",
-    date: "Dec 15-20, 2024",
+    title: "ARJUNA CHAMPIONSHIP 2025",
+    game: "Mobile Legends",
+    prizePool: "Rp. 1.000.000",
+    participants: "8 Teams",
+    date: "July 10-15, 2025",
     status: "Registration Open",
     image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&h=600&fit=crop",
     featured: true
@@ -26,16 +26,16 @@ const tournaments = [
     status: "Coming Soon",
     image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop"
   },
-  {
-    id: 3,
-    title: "PUBG Mobile Masters",
-    game: "PUBG Mobile",
-    prizePool: "$50,000",
-    participants: "128 Teams",
-    date: "Feb 5-10, 2025",
-    status: "Coming Soon",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop"
-  }
+  // {
+  //   id: 3,
+  //   title: "PUBG Mobile Masters",
+  //   game: "PUBG Mobile",
+  //   prizePool: "$50,000",
+  //   participants: "128 Teams",
+  //   date: "Feb 5-10, 2025",
+  //   status: "Coming Soon",
+  //   image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop"
+  // }
 ];
 
 const TournamentShowcase = () => {
