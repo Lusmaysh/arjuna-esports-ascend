@@ -16,16 +16,16 @@ const tournaments = [
     image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&h=600&fit=crop",
     featured: true
   },
-  {
-    id: 2,
-    title: "Mobile Legends Pro League",
-    game: "Mobile Legends",
-    prizePool: "$75,000",
-    participants: "32 Teams",
-    date: "Jan 10-15, 2025",
-    status: "Coming Soon",
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop"
-  },
+  // {
+  //   id: 2,
+  //   title: "Mobile Legends Pro League",
+  //   game: "Mobile Legends",
+  //   prizePool: "$75,000",
+  //   participants: "32 Teams",
+  //   date: "Jan 10-15, 2025",
+  //   status: "Coming Soon",
+  //   image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop"
+  // },
   // {
   //   id: 3,
   //   title: "PUBG Mobile Masters",
