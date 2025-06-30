@@ -98,7 +98,7 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <span className="text-muted-foreground">
-                  Jakarta Gaming Hub<br />
+                  Pekalongan Gaming Hub<br />
                   Indonesia
                 </span>
               </div>
@@ -108,7 +108,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary" />
-                <span className="text-muted-foreground">+62 21 1234 5678</span>
+                <span className="text-muted-foreground">+62 882-3130-3465</span>
               </div>
             </div>
           </div>
