@@ -4,7 +4,7 @@ import { Trophy, Zap, Target } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center hero-gradient pt-32 pb-20">
+    <section className="relative min-h-screen flex items-center justify-center hero-gradient pt-40 pb-20">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
@@ -24,7 +24,7 @@ const HeroSection = () => {
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          Southeast Asia's Premier Tournament Organizer. Where Legends Are Forged and Champions Rise.
+          Southeast Asia's Premier Mobile Legends Tournament Organizer. Where Legends Are Forged and Champions Rise.
         </p>
 
         {/* CTA Buttons */}
@@ -50,15 +50,15 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">500+</div>
+            <div className="text-muted-foreground font-inter">Mobile Legends Tournaments</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">50K+</div>
             <div className="text-muted-foreground font-inter">Active Players</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">50+</div>
-            <div className="text-muted-foreground font-inter">Tournaments</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">$1M+</div>
-            <div className="text-muted-foreground font-inter">Prize Pool</div>
+            <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">24/7</div>
+            <div className="text-muted-foreground font-inter">Live Events</div>
           </div>
         </div>
 
