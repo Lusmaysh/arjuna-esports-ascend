@@ -47,20 +47,25 @@ const HeroSection = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">500+</div>
-            <div className="text-muted-foreground font-inter">Mobile Legends Tournaments</div>
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto transition-all duration-1000 delay-600 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
+            <div className="text-center p-6 bg-card/50 rounded-xl backdrop-blur-sm border border-border/50">
+              <Trophy className="h-8 w-8 text-primary mx-auto mb-3" />
+              <div className="text-3xl font-orbitron font-bold text-primary mb-1">500+</div>
+              <div className="text-muted-foreground">Tournaments Hosted</div>
+            </div>
+            
+            <div className="text-center p-6 bg-card/50 rounded-xl backdrop-blur-sm border border-border/50">
+              <Users className="h-8 w-8 text-accent mx-auto mb-3" />
+              <div className="text-3xl font-orbitron font-bold text-accent mb-1">50K+</div>
+              <div className="text-muted-foreground">Active Players</div>
+            </div>
+            
+            <div className="text-center p-6 bg-card/50 rounded-xl backdrop-blur-sm border border-border/50">
+              <Calendar className="h-8 w-8 text-primary mx-auto mb-3" />
+              <div className="text-3xl font-orbitron font-bold text-primary mb-1">24/7</div>
+              <div className="text-muted-foreground">Live Events</div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">50K+</div>
-            <div className="text-muted-foreground font-inter">Active Players</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">24/7</div>
-            <div className="text-muted-foreground font-inter">Live Events</div>
-          </div>
-        </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
