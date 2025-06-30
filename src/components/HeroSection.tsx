@@ -4,7 +4,7 @@ import { Trophy, Zap, Target } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center hero-gradient pt-32 pb-20">
+    <section className="relative min-h-screen flex items-center justify-center hero-gradient pt-40 pb-20">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
