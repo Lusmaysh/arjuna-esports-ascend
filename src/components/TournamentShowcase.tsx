@@ -9,7 +9,7 @@ const tournaments = [
     id: 1,
     title: "ARJUNA CHAMPIONSHIP 2025",
     game: "Mobile Legends",
-    prizePool: "Rp. 1.000.000",
+    prizePool: "Rp1.000.000",
     participants: "8 Teams",
     date: "July 10-15, 2025",
     status: "Registration Open",
