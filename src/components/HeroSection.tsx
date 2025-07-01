@@ -48,15 +48,15 @@ const HeroSection = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-          <div className="text-center">
+          <div className="bg-card/30 backdrop-blur-sm border border-border/50 rounded-lg p-6 text-center hover:bg-card/40 transition-all duration-300">
             <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">500+</div>
             <div className="text-muted-foreground font-inter">Mobile Legends Tournaments</div>
           </div>
-          <div className="text-center">
+          <div className="bg-card/30 backdrop-blur-sm border border-border/50 rounded-lg p-6 text-center hover:bg-card/40 transition-all duration-300">
             <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">50K+</div>
             <div className="text-muted-foreground font-inter">Active Players</div>
           </div>
-          <div className="text-center">
+          <div className="bg-card/30 backdrop-blur-sm border border-border/50 rounded-lg p-6 text-center hover:bg-card/40 transition-all duration-300">
             <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">24/7</div>
             <div className="text-muted-foreground font-inter">Live Events</div>
           </div>
