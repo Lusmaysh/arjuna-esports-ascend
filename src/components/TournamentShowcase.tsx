@@ -13,7 +13,7 @@ const tournaments = [
     participants: "8 Teams",
     date: "July 10-15, 2025",
     status: "Registration Open",
-    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&h=600&fit=crop",
+    image: "/lovable-uploads/29f49445-28d6-49ae-b97e-989aed03cb6b.png",
     featured: true
   },
   // {
