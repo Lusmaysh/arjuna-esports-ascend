@@ -11,10 +11,10 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: 'Tournaments', href: '#tournaments' },
-    { name: 'Schedule', href: '#schedule' },
-    { name: 'Rankings', href: '#rankings' },
-    { name: 'News & Updates', href: '#news' },
+    { name: 'Tournaments', href: '/#tournaments' },
+    { name: 'Schedule', href: '/#schedule' },
+    { name: 'Rankings', href: '/#rankings' },
+    { name: 'News & Updates', href: '/#news' },
   ];
 
   const supportLinks = [
@@ -64,12 +64,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
