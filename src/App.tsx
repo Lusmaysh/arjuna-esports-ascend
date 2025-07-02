@@ -10,6 +10,9 @@ import TournamentRules from "./pages/TournamentRules";
 import HelpCenter from "./pages/HelpCenter";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Schedule from "./pages/Schedule";
+import Rankings from "./pages/Rankings";
+import NewsUpdates from "./pages/NewsUpdates";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +28,9 @@ const App = () => (
           <Route path="/help-center" element={<HelpCenter />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/rankings" element={<Rankings />} />
+          <Route path="/news-updates" element={<NewsUpdates />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

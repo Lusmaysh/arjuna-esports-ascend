@@ -1,4 +1,3 @@
-
 import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Twitch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -12,9 +11,9 @@ const Footer = () => {
 
   const quickLinks = [
     { name: 'Tournaments', href: '/#tournaments' },
-    { name: 'Schedule', href: '/#schedule' },
-    { name: 'Rankings', href: '/#rankings' },
-    { name: 'News & Updates', href: '/#news' },
+    { name: 'Schedule', href: '/schedule' },
+    { name: 'Rankings', href: '/rankings' },
+    { name: 'News & Updates', href: '/news-updates' },
   ];
 
   const supportLinks = [
@@ -28,11 +27,16 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleQuickLinkClick = () => {
-    // Small delay to ensure navigation happens first, then scroll
-    setTimeout(() => {
+  const handleQuickLinkClick = (href: string) => {
+    if (href.startsWith('/#')) {
+      // Small delay to ensure navigation happens first, then scroll
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    } else {
+      // For regular page navigation, scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
+    }
   };
 
   return (
@@ -77,7 +81,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    onClick={handleQuickLinkClick}
+                    onClick={() => handleQuickLinkClick(link.href)}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
