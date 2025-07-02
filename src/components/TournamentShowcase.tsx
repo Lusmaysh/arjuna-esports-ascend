@@ -141,8 +141,11 @@ const TournamentShowcase = () => {
                   <Button 
                     size="lg" 
                     className="w-full bg-primary hover:bg-primary/90 font-orbitron font-bold glow-effect"
-                  >
+                  asChild
+                >
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwFUahebkE7xGIiZq3z2gTjxfW6rUwqNNv2Iqsew3wnqTJnw/viewform?usp=header" target="_blank" rel="noopener noreferrer">
                     Register Now
+                  </a>
                   </Button>
                 </div>
               </div>
