@@ -1,5 +1,6 @@
 
 import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Twitch } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const socialLinks = [
@@ -17,10 +18,10 @@ const Footer = () => {
   ];
 
   const supportLinks = [
-    { name: 'Help Center', href: '#' },
-    { name: 'Contact Us', href: '#' },
-    { name: 'Tournament Rules', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
+    { name: 'Help Center', href: '/help-center' },
+    { name: 'Contact Us', href: '/contact-us' },
+    { name: 'Tournament Rules', href: '/tournament-rules' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
   ];
 
   return (
@@ -80,12 +81,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {supportLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -123,9 +124,9 @@ const Footer = () => {
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors">
               Privacy Policy
-            </a>
+            </Link>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               Cookie Policy
             </a>
