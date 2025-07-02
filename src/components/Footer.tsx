@@ -24,6 +24,17 @@ const Footer = () => {
     { name: 'Privacy Policy', href: '/privacy-policy' },
   ];
 
+  const handleSupportLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleQuickLinkClick = () => {
+    // Small delay to ensure navigation happens first, then scroll
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <footer className="bg-gradient-to-b from-background to-muted/20 border-t border-border/50">
       <div className="max-w-7xl mx-auto px-6 py-20">
@@ -66,6 +77,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
+                    onClick={handleQuickLinkClick}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
@@ -83,6 +95,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
+                    onClick={handleSupportLinkClick}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
@@ -124,7 +137,11 @@ const Footer = () => {
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               Terms of Service
             </a>
-            <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link 
+              to="/privacy-policy" 
+              onClick={handleSupportLinkClick}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Privacy Policy
             </Link>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
