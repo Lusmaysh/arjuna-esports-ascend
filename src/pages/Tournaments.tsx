@@ -10,48 +10,48 @@ const Tournaments = () => {
   const tournaments = [
     {
       id: 1,
-      title: 'Arjuna Valorant Championship',
-      game: 'Valorant',
+      title: 'Mobile Legends Tournament',
+      game: 'Mobile Legends',
       status: 'upcoming',
-      date: '15 Januari 2025',
+      date: '15 August 2025',
       prize: 'Rp 10.000.000',
       participants: '64 Tim',
       location: 'Online',
-      description: 'Turnamen Valorant terbesar dengan format 5v5 elimination.'
+      description: 'Turnamen Mobile Legends dengan format double elimination.'
     },
     {
       id: 2,
-      title: 'Mobile Legends Tournament',
+      title: 'Arjuna Championship 2025',
       game: 'Mobile Legends',
       status: 'registration',
-      date: '22 Januari 2025',
-      prize: 'Rp 7.500.000',
-      participants: '32 Tim',
-      location: 'Jakarta',
+      date: '10 July 2025',
+      prize: 'Rp 1.000.000',
+      participants: '8 Tim',
+      location: 'Pekalongan',
       description: 'Kompetisi Mobile Legends dengan format double elimination.'
     },
-    {
-      id: 3,
-      title: 'PUBG Mobile Championship',
-      game: 'PUBG Mobile',
-      status: 'ongoing',
-      date: '10 Januari 2025',
-      prize: 'Rp 15.000.000',
-      participants: '128 Tim',
-      location: 'Bandung',
-      description: 'Battle Royale championship dengan hadiah terbesar.'
-    },
-    {
-      id: 4,
-      title: 'Free Fire Masters',
-      game: 'Free Fire',
-      status: 'completed',
-      date: '5 Januari 2025',
-      prize: 'Rp 5.000.000',
-      participants: '48 Tim',
-      location: 'Surabaya',
-      description: 'Turnamen Free Fire regional dengan pemain terbaik.'
-    }
+    // {
+    //   id: 3,
+    //   title: 'PUBG Mobile Championship',
+    //   game: 'PUBG Mobile',
+    //   status: 'ongoing',
+    //   date: '10 Januari 2025',
+    //   prize: 'Rp 15.000.000',
+    //   participants: '128 Tim',
+    //   location: 'Bandung',
+    //   description: 'Battle Royale championship dengan hadiah terbesar.'
+    // },
+    // {
+    //   id: 4,
+    //   title: 'Free Fire Masters',
+    //   game: 'Free Fire',
+    //   status: 'completed',
+    //   date: '5 Januari 2025',
+    //   prize: 'Rp 5.000.000',
+    //   participants: '48 Tim',
+    //   location: 'Surabaya',
+    //   description: 'Turnamen Free Fire regional dengan pemain terbaik.'
+    // }
   ];
 
   const getStatusBadge = (status: string) => {
