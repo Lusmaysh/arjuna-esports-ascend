@@ -18,12 +18,13 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+    { name: 'Dashboard', href: '/', icon: LayoutDashboard },
     { name: 'Tournaments', href: '/tournaments', icon: Trophy },
-    { name: 'Schedule', href: '/schedule', icon: Calendar },
-    { name: 'Community', href: '/community', icon: Users },
+    // { name: 'Schedule', href: '/schedule', icon: Calendar },
+    // { name: 'Community', href: '/community', icon: Users },
+    // { name: 'News & Updates', href: '/news-updates', icon: Newspaper },
     { name: 'Tournament Services', href: '/tournament-services', icon: DollarSign },
-    { name: 'News & Updates', href: '/news-updates', icon: Newspaper },
+    
   ];
 
   const handleScrollToTop = () => {
