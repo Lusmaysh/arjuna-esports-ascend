@@ -1,4 +1,4 @@
-import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Smartphone, twitch } from 'lucide-react';
+import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Smartphone, Twitch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
