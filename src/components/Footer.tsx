@@ -10,10 +10,11 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: 'Tournaments', href: '/#tournaments' },
+    { name: 'Tournaments', href: '/tournaments' },
     { name: 'Schedule', href: '/schedule' },
     { name: 'Rankings', href: '/rankings' },
     { name: 'News & Updates', href: '/news-updates' },
+    { name: 'Community', href: '/community' },
   ];
 
   const supportLinks = [
