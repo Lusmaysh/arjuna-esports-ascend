@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   const socialLinks = [
     { name: 'Twitter', icon: Twitter, href: '#' },
-    { name: 'YouTube', icon: Youtube, href: '#' },
+    { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/' },
     { name: 'Instagram', icon: Instagram, href: '#' },
     { name: 'Twitch', icon: Twitch, href: '#' },
   ];
