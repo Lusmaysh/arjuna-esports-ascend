@@ -1,7 +1,12 @@
 
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const StorySection = () => {
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <section className="py-24 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden">
       {/* Background elements */}
@@ -31,12 +36,16 @@ const StorySection = () => {
               world-class competitive experiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-primary hover:bg-primary/90 text-primary-foreground font-orbitron font-bold px-8 py-4 rounded-lg glow-effect transition-all">
-                Join Our Community
-              </button>
-              <button className="border border-primary/50 text-primary hover:bg-primary/10 font-orbitron font-bold px-8 py-4 rounded-lg transition-all">
-                Partner With Us
-              </button>
+              <Link to="/community" onClick={handleScrollToTop}>
+                <button className="bg-primary hover:bg-primary/90 text-primary-foreground font-orbitron font-bold px-8 py-4 rounded-lg glow-effect transition-all">
+                  Join Our Community
+                </button>
+              </Link>
+              <Link to="/contact-us" onClick={handleScrollToTop}>
+                <button className="border border-primary/50 text-primary hover:bg-primary/10 font-orbitron font-bold px-8 py-4 rounded-lg transition-all">
+                  Partner With Us
+                </button>
+              </Link>
             </div>
           </div>
         </div>

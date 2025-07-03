@@ -1,8 +1,13 @@
 
 import { Button } from '@/components/ui/button';
 import { Trophy, Zap, Target } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-gradient pt-40 pb-20">
       {/* Background Effects */}
@@ -29,13 +34,15 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <Button 
-            size="lg"
-            className="bg-primary hover:bg-primary/90 font-orbitron font-bold text-lg px-8 py-4 glow-effect animate-pulse-glow"
-          >
-            <Trophy className="mr-2 h-5 w-5" />
-            Join Tournament
-          </Button>
+          <Link to="/tournaments" onClick={handleScrollToTop}>
+            <Button 
+              size="lg"
+              className="bg-primary hover:bg-primary/90 font-orbitron font-bold text-lg px-8 py-4 glow-effect animate-pulse-glow"
+            >
+              <Trophy className="mr-2 h-5 w-5" />
+              Join Tournament
+            </Button>
+          </Link>
           <Button 
             size="lg"
             variant="outline"
