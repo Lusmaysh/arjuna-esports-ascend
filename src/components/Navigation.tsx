@@ -41,7 +41,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/dashboard" onClick={handleScrollToTop}>
+          <Link to="/" onClick={handleScrollToTop}>
             <div className="flex items-center">
               <div className="font-orbitron text-2xl font-black">
                 <span className="gradient-text">ARJUNA</span>
