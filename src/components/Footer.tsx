@@ -1,4 +1,4 @@
-import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Smartphone } from 'lucide-react';
+import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Smartphone, twitch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -6,7 +6,7 @@ const Footer = () => {
     { name: 'Twitter', icon: Twitter, href: '#' },
     { name: 'YouTube', icon: Youtube, href: '#' },
     { name: 'Instagram', icon: Instagram, href: '#' },
-    { name: 'TikTok', icon: Smartphone, href: '#' },
+    { name: 'Twitch', icon: Twitch, href: '#' },
   ];
 
   const quickLinks = [
