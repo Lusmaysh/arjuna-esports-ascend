@@ -4,9 +4,79 @@ import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 const ContactUs = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate form - check for empty fields
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields before sending.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Create email content
+    const emailBody = `Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}`;
+
+    // Create mailto link
+    const mailtoLink = `mailto:samsulpkl11@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    toast({
+      title: "Success",
+      description: "Email client opened. Please send the email to complete your message.",
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -49,7 +119,7 @@ const ContactUs = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@arjuna-esports.com</p>
+                    <p className="text-muted-foreground">samsulpkl11@gmail.com</p>
                   </div>
                 </div>
 
@@ -83,11 +153,14 @@ const ContactUs = () => {
             <div className="bg-card/50 border border-border/50 rounded-lg p-8">
               <h2 className="font-orbitron text-2xl font-bold mb-6">Send Message</h2>
               
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">Name</label>
                   <input 
                     type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Your name"
                   />
@@ -97,6 +170,9 @@ const ContactUs = () => {
                   <label className="block text-sm font-medium mb-2">Email</label>
                   <input 
                     type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="your.email@example.com"
                   />
@@ -106,6 +182,9 @@ const ContactUs = () => {
                   <label className="block text-sm font-medium mb-2">Subject</label>
                   <input 
                     type="text" 
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="What's this about?"
                   />
@@ -115,12 +194,15 @@ const ContactUs = () => {
                   <label className="block text-sm font-medium mb-2">Message</label>
                   <textarea 
                     rows={5}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                     placeholder="Your message..."
                   />
                 </div>
                 
-                <Button className="w-full font-orbitron">
+                <Button type="submit" className="w-full font-orbitron">
                   Send Message
                 </Button>
               </form>
