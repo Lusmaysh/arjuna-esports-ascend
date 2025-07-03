@@ -1,4 +1,4 @@
-import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Phone, Twitch } from 'lucide-react';
+import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Twitch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -6,7 +6,7 @@ const Footer = () => {
     { name: 'Twitter', icon: Twitter, href: '#' },
     { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/' },
     { name: 'Instagram', icon: Instagram, href: '#' },
-    { name: 'WhatsApp', icon: Phone, href: 'wa.me/088231303465' },
+    { name: 'WhatsApp', icon: Phone, href: 'https://wa.me/6288231303465' },
   ];
 
   const quickLinks = [
@@ -65,6 +65,8 @@ const Footer = () => {
                   <a
                     key={social.name}
                     href={social.href}
+                    target="_blank"  // <-- Tambahkan ini
+                    rel="noopener noreferrer" // <-- Tambahkan ini untuk keamanan
                     className="w-10 h-10 bg-card/50 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 border border-border/50"
                   >
                     <Icon className="h-5 w-5" />
