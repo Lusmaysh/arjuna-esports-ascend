@@ -1,4 +1,3 @@
-
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,7 +27,8 @@ const Tournaments = () => {
       prize: 'Rp 1.000.000',
       participants: '8 Tim',
       location: 'Pekalongan',
-      description: 'Kompetisi Mobile Legends dengan format double elimination.'
+      description: 'Kompetisi Mobile Legends dengan format double elimination.',
+      registrationLink: 'https://docs.google.com/forms/d/e/1FAIpQLSfwFUahebkE7xGIiZq3z2gTjxfW6rUwqNNv2Iqsew3wnqTJnw/viewform?usp=header'
     },
     // {
     //   id: 3,
@@ -88,6 +88,21 @@ const Tournaments = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {tournaments.map((tournament) => {
                 const statusBadge = getStatusBadge(tournament.status);
+                const getButtonText = () => {
+                  switch (tournament.status) {
+                    case 'registration': return 'Daftar Sekarang';
+                    case 'ongoing': return 'Lihat Live';
+                    case 'completed': return 'Lihat Hasil';
+                    default: return 'Info Lengkap';
+                  }
+                };
+
+                const handleButtonClick = () => {
+                  if (tournament.status === 'registration' && tournament.registrationLink) {
+                    window.open(tournament.registrationLink, '_blank');
+                  }
+                };
+
                 return (
                   <Card key={tournament.id} className="hover:shadow-lg transition-shadow">
                     <CardHeader>
@@ -127,10 +142,12 @@ const Tournaments = () => {
                         </div>
                       </div>
                       
-                      <Button className="w-full" variant="outline">
-                        {tournament.status === 'registration' ? 'Daftar Sekarang' : 
-                         tournament.status === 'ongoing' ? 'Lihat Live' :
-                         tournament.status === 'completed' ? 'Lihat Hasil' : 'Info Lengkap'}
+                      <Button 
+                        className="w-full" 
+                        variant="outline"
+                        onClick={handleButtonClick}
+                      >
+                        {getButtonText()}
                       </Button>
                     </CardContent>
                   </Card>
