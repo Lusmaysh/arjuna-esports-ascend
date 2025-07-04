@@ -23,8 +23,6 @@ const Navigation = () => {
     // { name: 'Schedule', href: '/schedule', icon: Calendar },
     // { name: 'Community', href: '/community', icon: Users },
     // { name: 'News & Updates', href: '/news-updates', icon: Newspaper },
-    { name: 'Tournament Services', href: '/tournament-services', icon: DollarSign },
-    
   ];
 
   const handleScrollToTop = () => {
@@ -71,6 +69,20 @@ const Navigation = () => {
                 </Link>
               );
             })}
+            
+            {/* Special Tournament Services Button */}
+            <Link
+              to="/tournament-services"
+              onClick={handleScrollToTop}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full border-2 font-inter font-semibold transition-all duration-300 ${
+                location.pathname === '/tournament-services'
+                  ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25'
+                  : 'bg-gradient-to-r from-primary/10 to-accent/10 text-primary border-primary/50 hover:bg-gradient-to-r hover:from-primary/20 hover:to-accent/20 hover:border-primary hover:shadow-lg hover:shadow-primary/25'
+              }`}
+            >
+              <DollarSign className="h-4 w-4" />
+              Tournament Services
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -105,6 +117,20 @@ const Navigation = () => {
                   </Link>
                 );
               })}
+              
+              {/* Special Tournament Services Button for Mobile */}
+              <Link
+                to="/tournament-services"
+                className={`flex items-center gap-3 mx-3 px-3 py-2 rounded-lg border-2 font-inter font-semibold transition-all duration-300 ${
+                  location.pathname === '/tournament-services'
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'bg-gradient-to-r from-primary/10 to-accent/10 text-primary border-primary/50'
+                }`}
+                onClick={handleScrollToTop}
+              >
+                <DollarSign className="h-4 w-4" />
+                Tournament Services
+              </Link>
             </div>
           </div>
         )}
