@@ -10,33 +10,33 @@ const Schedule = () => {
 
   const upcomingMatches = [
     {
-      date: "2024-01-15",
+      date: "2025-07-10",
       time: "19:00 WIB",
       tournament: "Mobile Legends Championship",
       teams: "Team Alpha vs Team Beta",
       venue: "Online"
     },
     {
-      date: "2024-01-18",
+      date: "2025-08-18",
       time: "20:00 WIB",
-      tournament: "Free Fire Tournament",
+      tournament: "Mobile Legends Tournament",
       teams: "Fire Squad vs Lightning Bolt",
       venue: "Pekalongan Gaming Hub"
     },
     {
-      date: "2024-01-22",
+      date: "2025-09-22",
       time: "18:30 WIB",
-      tournament: "PUBG Mobile Cup",
-      teams: "Battle Royale Final",
+      tournament: "Mobile Legends Cup",
+      teams: "Alpha vs Beta",
       venue: "Online"
     },
-    {
-      date: "2024-01-25",
-      time: "19:30 WIB",
-      tournament: "Valorant Regional",
-      teams: "Phoenix vs Storm",
-      venue: "Online"
-    }
+    // {
+    //   date: "2024-01-25",
+    //   time: "19:30 WIB",
+    //   tournament: "Valorant Regional",
+    //   teams: "Phoenix vs Storm",
+    //   venue: "Online"
+    // }
   ];
 
   return (

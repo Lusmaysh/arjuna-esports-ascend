@@ -38,7 +38,7 @@ const NewsUpdates = () => {
     },
     {
       id: 4,
-      title: "Free Fire Tournament Rules Updated",
+      title: "Mobile Legends Tournament Rules Updated",
       excerpt: "Important changes to tournament format and rules. All participants should review the updated guidelines.",
       date: "2024-01-03",
       author: "Rules Committee",

@@ -119,7 +119,7 @@ ${formData.message}`;
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">samsulpkl11@gmail.com</p>
+                    <p className="text-muted-foreground">info@arjuna-esports.com</p>
                   </div>
                 </div>
 

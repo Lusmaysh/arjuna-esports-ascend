@@ -123,7 +123,7 @@ const Rankings = () => {
                 <Trophy className="h-8 w-8 text-amber-600 mx-auto mb-2" />
                 <h3 className="font-semibold">Team Victory</h3>
                 <p className="text-muted-foreground text-sm">Legends United</p>
-                <p className="text-primary text-sm">Free Fire Championship</p>
+                <p className="text-primary text-sm">Mobile Legends Championship</p>
               </div>
             </div>
           </div>
