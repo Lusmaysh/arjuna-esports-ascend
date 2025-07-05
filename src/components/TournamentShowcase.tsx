@@ -7,12 +7,12 @@ import { Trophy, Users, DollarSign, Calendar } from 'lucide-react';
 const tournaments = [
   {
     id: 1,
-    title: "ARJUNA CHAMPIONSHIP 2025",
+    title: "KEJUARAAN ARJUNA 2025",
     game: "Mobile Legends",
     prizePool: "Rp 1.000.000",
-    participants: "8 Teams",
-    date: "July 10-15, 2025",
-    status: "Registration Open",
+    participants: "8 Tim",
+    date: "10-15 Juli 2025",
+    status: "Pendaftaran Dibuka",
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop",
     featured: true
   },
@@ -21,9 +21,9 @@ const tournaments = [
   //   title: "Mobile Legends Pro League",
   //   game: "Mobile Legends",
   //   prizePool: "$75,000",
-  //   participants: "32 Teams",
-  //   date: "Jan 10-15, 2025",
-  //   status: "Coming Soon",
+  //   participants: "32 Tim",
+  //   date: "10-15 Jan 2025",
+  //   status: "Segera Hadir",
   //   image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop"
   // },
   // {
@@ -31,9 +31,9 @@ const tournaments = [
   //   title: "PUBG Mobile Masters",
   //   game: "PUBG Mobile",
   //   prizePool: "$50,000",
-  //   participants: "128 Teams",
-  //   date: "Feb 5-10, 2025",
-  //   status: "Coming Soon",
+  //   participants: "128 Tim",
+  //   date: "5-10 Feb 2025",
+  //   status: "Segera Hadir",
   //   image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop"
   // }
 ];
@@ -49,11 +49,11 @@ const TournamentShowcase = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="font-orbitron text-4xl md:text-6xl font-black mb-6">
-            <span className="gradient-text">ELITE</span> TOURNAMENTS
+            TURNAMEN <span className="gradient-text">ELIT</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Compete at the highest level. Our tournaments feature the best teams, 
-            biggest prize pools, and most intense competition in esports.
+            Berkompetisi di level tertinggi. Turnamen kami menampilkan tim terbaik, 
+            hadiah terbesar, dan kompetisi paling intens dalam esports.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ const TournamentShowcase = () => {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              Upcoming
+              Mendatang
             </button>
             <button
               onClick={() => setActiveTab('live')}
@@ -78,7 +78,7 @@ const TournamentShowcase = () => {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              Live Now
+              Live Sekarang
             </button>
             <button
               onClick={() => setActiveTab('past')}
@@ -88,7 +88,7 @@ const TournamentShowcase = () => {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              Past Events
+              Event Sebelumnya
             </button>
           </div>
         </div>
@@ -107,7 +107,7 @@ const TournamentShowcase = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
                   <div className="absolute top-4 left-4">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-orbitron font-bold">
-                      FEATURED
+                      UNGGULAN
                     </span>
                   </div>
                 </div>
@@ -144,7 +144,7 @@ const TournamentShowcase = () => {
                   asChild
                 >
                   <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwFUahebkE7xGIiZq3z2gTjxfW6rUwqNNv2Iqsew3wnqTJnw/viewform?usp=header" target="_blank" rel="noopener noreferrer">
-                    Register Now
+                    Daftar Sekarang
                   </a>
                   </Button>
                 </div>
@@ -189,15 +189,15 @@ const TournamentShowcase = () => {
                   
                   <div className="space-y-2 mb-6 text-sm">
                     <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Prize Pool</span>
+                      <span className="text-muted-foreground">Hadiah</span>
                       <span className="font-bold text-primary">{tournament.prizePool}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Teams</span>
+                      <span className="text-muted-foreground">Tim</span>
                       <span>{tournament.participants}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Date</span>
+                      <span className="text-muted-foreground">Tanggal</span>
                       <span>{tournament.date}</span>
                     </div>
                   </div>
@@ -206,7 +206,7 @@ const TournamentShowcase = () => {
                     variant="outline" 
                     className="w-full border-primary/50 text-primary hover:bg-primary/10 font-orbitron"
                   >
-                    Learn More
+                    Pelajari Lebih Lanjut
                   </Button>
                 </div>
               </CardContent>

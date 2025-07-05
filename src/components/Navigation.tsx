@@ -20,10 +20,10 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-    { name: 'Tournaments', href: '/tournaments', icon: Trophy },
-    // { name: 'Schedule', href: '/schedule', icon: Calendar },
-    // { name: 'Community', href: '/community', icon: Users },
-    // { name: 'News & Updates', href: '/news-updates', icon: Newspaper },
+    { name: 'Turnamen', href: '/tournaments', icon: Trophy },
+    // { name: 'Jadwal', href: '/schedule', icon: Calendar },
+    // { name: 'Komunitas', href: '/community', icon: Users },
+    // { name: 'Berita & Update', href: '/news-updates', icon: Newspaper },
   ];
 
   const handleScrollToTop = () => {
@@ -82,7 +82,7 @@ const Navigation = () => {
               }`}
             >
               <ShoppingCart className="h-4 w-4" />
-              Services
+              Layanan
             </Link>
 
             {/* Theme Toggle */}
@@ -136,7 +136,7 @@ const Navigation = () => {
                 onClick={handleScrollToTop}
               >
                 <ShoppingCart className="h-4 w-4" />
-                Services
+                Layanan
               </Link>
             </div>
           </div>

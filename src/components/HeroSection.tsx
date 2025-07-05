@@ -23,13 +23,13 @@ const HeroSection = () => {
             <span className="gradient-text text-glow">ARJUNA</span>
           </h1>
           <h2 className="font-orbitron text-2xl md:text-4xl lg:text-5xl font-bold text-muted-foreground">
-            ESPORTS CHAMPIONSHIP
+            KEJUARAAN ESPORTS
           </h2>
         </div>
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          Southeast Asia's Premier Mobile Legends Tournament Organizer. Where Legends Are Forged and Champions Rise.
+          Penyelenggara Turnamen Mobile Legends Terdepan di Asia Tenggara. Tempat Legenda Tercipta dan Juara Lahir.
         </p>
 
         {/* CTA Buttons */}
@@ -40,7 +40,7 @@ const HeroSection = () => {
               className="bg-primary hover:bg-primary/90 font-orbitron font-bold text-lg px-8 py-4 glow-effect animate-pulse-glow"
             >
               <Trophy className="mr-2 h-5 w-5" />
-              Join Tournament
+              Ikuti Turnamen
             </Button>
           </Link>
           <Button 
@@ -49,7 +49,7 @@ const HeroSection = () => {
             className="border-primary/50 text-primary hover:bg-primary/10 font-orbitron font-bold text-lg px-8 py-4"
           >
             <Zap className="mr-2 h-5 w-5" />
-            Watch Live
+            Tonton Live
           </Button>
         </div>
 
@@ -57,15 +57,15 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <div className="bg-card/30 backdrop-blur-sm border border-border/50 rounded-lg p-6 text-center hover:bg-card/40 transition-all duration-300">
             <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">500+</div>
-            <div className="text-muted-foreground font-inter">Mobile Legends Tournaments</div>
+            <div className="text-muted-foreground font-inter">Turnamen Mobile Legends</div>
           </div>
           <div className="bg-card/30 backdrop-blur-sm border border-border/50 rounded-lg p-6 text-center hover:bg-card/40 transition-all duration-300">
             <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">50K+</div>
-            <div className="text-muted-foreground font-inter">Active Players</div>
+            <div className="text-muted-foreground font-inter">Pemain Aktif</div>
           </div>
           <div className="bg-card/30 backdrop-blur-sm border border-border/50 rounded-lg p-6 text-center hover:bg-card/40 transition-all duration-300">
             <div className="text-4xl md:text-5xl font-orbitron font-black gradient-text mb-2">24/7</div>
-            <div className="text-muted-foreground font-inter">Live Events</div>
+            <div className="text-muted-foreground font-inter">Event Live</div>
           </div>
         </div>
 

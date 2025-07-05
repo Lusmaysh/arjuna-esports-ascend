@@ -11,23 +11,23 @@ const TournamentRules = () => {
   const rules = [
     {
       icon: Users,
-      title: "Team Composition",
-      description: "Each team must consist of 5 players with 1 substitute allowed."
+      title: "Komposisi Tim",
+      description: "Setiap tim harus terdiri dari 5 pemain dengan 1 pemain cadangan yang diizinkan."
     },
     {
       icon: Clock,
-      title: "Match Duration",
-      description: "Standard matches have a 30-minute time limit. Overtime rules apply if needed."
+      title: "Durasi Pertandingan",
+      description: "Pertandingan standar memiliki batas waktu 30 menit. Aturan perpanjangan waktu berlaku jika diperlukan."
     },
     {
       icon: Shield,
       title: "Fair Play",
-      description: "No cheating, hacking, or unsportsmanlike conduct. Violations result in immediate disqualification."
+      description: "Tidak ada kecurangan, hacking, atau perilaku tidak sportif. Pelanggaran mengakibatkan diskualifikasi langsung."
     },
     {
       icon: CheckCircle,
-      title: "Equipment Standards",
-      description: "All players must use approved devices and maintain stable internet connection."
+      title: "Standar Peralatan",
+      description: "Semua pemain harus menggunakan perangkat yang disetujui dan menjaga koneksi internet yang stabil."
     }
   ];
 
@@ -42,12 +42,12 @@ const TournamentRules = () => {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Trophy className="h-8 w-8 text-primary" />
               <h1 className="font-orbitron text-4xl font-black gradient-text">
-                Tournament Rules
+                Aturan Turnamen
               </h1>
             </div>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Official rules and regulations for all Arjuna Esports tournaments. 
-              Please read carefully before participating.
+              Aturan dan regulasi resmi untuk semua turnamen Arjuna Esports. 
+              Harap baca dengan cermat sebelum berpartisipasi.
             </p>
           </div>
 
@@ -75,28 +75,28 @@ const TournamentRules = () => {
           <div className="bg-card/30 border border-border/50 rounded-lg p-8 mb-8">
             <h2 className="font-orbitron text-2xl font-bold mb-6 flex items-center gap-3">
               <AlertCircle className="h-6 w-6 text-primary" />
-              Detailed Regulations
+              Regulasi Terperinci
             </h2>
             
             <div className="space-y-6 text-muted-foreground">
               <div>
-                <h3 className="font-semibold text-foreground mb-2">1. Registration Requirements</h3>
-                <p>All players must be registered 48 hours before tournament start. Valid ID and contact information required.</p>
+                <h3 className="font-semibold text-foreground mb-2">1. Persyaratan Pendaftaran</h3>
+                <p>Semua pemain harus terdaftar 48 jam sebelum turnamen dimulai. KTP yang valid dan informasi kontak diperlukan.</p>
               </div>
               
               <div>
-                <h3 className="font-semibold text-foreground mb-2">2. Match Protocol</h3>
-                <p>Players must join the designated lobby 15 minutes before scheduled match time. Late arrivals may result in forfeit.</p>
+                <h3 className="font-semibold text-foreground mb-2">2. Protokol Pertandingan</h3>
+                <p>Pemain harus bergabung dengan lobby yang ditentukan 15 menit sebelum waktu pertandingan terjadwal. Keterlambatan dapat mengakibatkan forfeit.</p>
               </div>
               
               <div>
-                <h3 className="font-semibold text-foreground mb-2">3. Technical Issues</h3>
-                <p>In case of technical difficulties, notify tournament officials immediately. Matches may be paused or rescheduled at organizer discretion.</p>
+                <h3 className="font-semibold text-foreground mb-2">3. Masalah Teknis</h3>
+                <p>Dalam kasus kesulitan teknis, segera beritahu panitia turnamen. Pertandingan dapat dihentikan sementara atau dijadwal ulang atas kebijaksanaan penyelenggara.</p>
               </div>
               
               <div>
-                <h3 className="font-semibold text-foreground mb-2">4. Prize Distribution</h3>
-                <p>Prizes will be distributed within 7 business days after tournament conclusion. Tax responsibilities lie with the winners.</p>
+                <h3 className="font-semibold text-foreground mb-2">4. Distribusi Hadiah</h3>
+                <p>Hadiah akan didistribusikan dalam 7 hari kerja setelah turnamen berakhir. Tanggung jawab pajak ada pada pemenang.</p>
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@ const TournamentRules = () => {
               variant="outline"
               className="font-orbitron"
             >
-              Back to Home
+              Kembali ke Beranda
             </Button>
           </div>
         </div>
