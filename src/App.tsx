@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./components/ThemeProvider";
 import Dashboard from "./pages/Dashboard";
 import Tournaments from "./pages/Tournaments";
 import Community from "./pages/Community";
@@ -21,28 +22,30 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/tournaments" element={<Tournaments />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/tournament-services" element={<TournamentServices />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/rankings" element={<Rankings />} />
-          <Route path="/news-updates" element={<NewsUpdates />} />
-          <Route path="/tournament-rules" element={<TournamentRules />} />
-          <Route path="/help-center" element={<HelpCenter />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider defaultTheme="dark" storageKey="arjuna-esports-theme">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/tournaments" element={<Tournaments />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/tournament-services" element={<TournamentServices />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/rankings" element={<Rankings />} />
+            <Route path="/news-updates" element={<NewsUpdates />} />
+            <Route path="/tournament-rules" element={<TournamentRules />} />
+            <Route path="/help-center" element={<HelpCenter />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
