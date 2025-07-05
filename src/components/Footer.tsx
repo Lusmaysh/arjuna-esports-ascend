@@ -1,8 +1,9 @@
-import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Twitch } from 'lucide-react';
+import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const socialLinks = [
+    { name: 'Facebook', icon: Facebook, href: '#' },
     { name: 'Twitter', icon: Twitter, href: '#' },
     { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/' },
     { name: 'Instagram', icon: Instagram, href: '#' },
