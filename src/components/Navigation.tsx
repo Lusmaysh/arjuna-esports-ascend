@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Trophy, Calendar, Users, DollarSign, LayoutDashboard, Newspaper } from 'lucide-react';
+import { Menu, X, Trophy, Calendar, Users, DollarSign, LayoutDashboard, Newspaper, ShoppingCart } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
@@ -80,7 +80,7 @@ const Navigation = () => {
                   : 'bg-gradient-to-r from-primary/10 to-accent/10 text-primary border-primary/50 hover:bg-gradient-to-r hover:from-primary/20 hover:to-accent/20 hover:border-primary hover:shadow-lg hover:shadow-primary/25'
               }`}
             >
-              <DollarSign className="h-4 w-4" />
+              <ShoppingCart className="h-4 w-4" />
               Services
             </Link>
           </div>
@@ -128,7 +128,7 @@ const Navigation = () => {
                 }`}
                 onClick={handleScrollToTop}
               >
-                <DollarSign className="h-4 w-4" />
+                <ShoppingCart className="h-4 w-4" />
                 Services
               </Link>
             </div>
