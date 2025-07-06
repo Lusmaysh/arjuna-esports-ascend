@@ -28,7 +28,7 @@ const TournamentServices = () => {
     {
       id: 1,
       title: 'Tournament Organization',
-      price: 'Rp 500.000',
+      price: '500.000',
       description: 'Layanan penyelenggaraan turnamen esports profesional',
       features: [
         'Setup dan konfigurasi turnamen',
@@ -44,7 +44,7 @@ const TournamentServices = () => {
     {
       id: 2,
       title: 'Full Tournament Package',
-      price: 'Rp 750.000',
+      price: '750.000',
       description: 'Paket lengkap turnamen termasuk recruitment pemain',
       features: [
         'Semua fitur Tournament Organization',
@@ -156,7 +156,7 @@ const TournamentServices = () => {
                       </div>
                       <CardTitle className="text-2xl font-orbitron">{service.title}</CardTitle>
                       <div className="text-3xl font-bold text-primary font-orbitron">
-                        {service.price}
+                        Rp {service.price}
                       </div>
                       <CardDescription className="text-base">
                         {service.description}
