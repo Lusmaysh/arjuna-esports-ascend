@@ -5,8 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Users, Calendar, CheckCircle } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const TournamentServices = () => {
+  const { toast } = useToast();
+
   const services = [
     {
       id: 1,
@@ -44,9 +47,30 @@ const TournamentServices = () => {
     }
   ];
 
-  const handleContactService = (serviceTitle: string) => {
-    // In a real app, this would redirect to a contact form or open a modal
-    alert(`Terima kasih atas minat Anda pada ${serviceTitle}. Tim kami akan segera menghubungi Anda!`);
+  const handleContactService = (serviceTitle: string, servicePrice: string) => {
+    // Show success notification to user
+    toast({
+      title: "Pesanan Berhasil Dikirim!",
+      description: `Terima kasih atas minat Anda pada ${serviceTitle}. Tim kami akan segera menghubungi Anda!`,
+      duration: 5000,
+    });
+
+    // Show admin notification (in a real app, this would be sent to your backend)
+    setTimeout(() => {
+      toast({
+        title: "🔔 Pesanan Baru Masuk!",
+        description: `Pelanggan baru memesan: ${serviceTitle} (${servicePrice})`,
+        duration: 8000,
+      });
+    }, 1000);
+
+    // Log the order details (in a real app, this would be sent to your backend/analytics)
+    console.log('New service order:', {
+      package: serviceTitle,
+      price: servicePrice,
+      timestamp: new Date().toISOString(),
+      userId: 'anonymous', // In a real app, you'd have user authentication
+    });
   };
 
   return (
@@ -106,7 +130,7 @@ const TournamentServices = () => {
                       <Button 
                         className="w-full font-semibold"
                         size="lg"
-                        onClick={() => handleContactService(service.title)}
+                        onClick={() => handleContactService(service.title, service.price)}
                       >
                         Pilih Paket Ini
                       </Button>
