@@ -1,4 +1,3 @@
-
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +15,7 @@ import { useState } from 'react';
 const TournamentServices = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<{title: string, price: string} | null>(null);
   const [customerData, setCustomerData] = useState({
     name: '',
@@ -93,18 +93,12 @@ const TournamentServices = () => {
         duration: 5000,
       });
 
-      // Admin notification (this would be visible to you as the owner)
-      // setTimeout(() => {
-      //   toast({
-      //     title: "🔔 Pesanan Baru Masuk!",
-      //     description: `Pelanggan baru: ${customerData.name} memesan ${selectedService.title} (${selectedService.price})`,
-      //     duration: 8000,
-      //   });
-      // }, 1000);
-
       // Reset form
       setCustomerData({ name: '', email: '', phone: '', notes: '' });
       setSelectedService(null);
+      
+      // Close the dialog
+      setIsDialogOpen(false);
 
       console.log('New service order created:', data);
     } catch (error) {
@@ -122,6 +116,7 @@ const TournamentServices = () => {
 
   const openOrderDialog = (service: {title: string, price: string}) => {
     setSelectedService(service);
+    setIsDialogOpen(true);
   };
 
   return (
@@ -178,7 +173,7 @@ const TournamentServices = () => {
                         ))}
                       </ul>
                       
-                      <Dialog>
+                      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                         <DialogTrigger asChild>
                           <Button 
                             className="w-full font-semibold"
