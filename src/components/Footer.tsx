@@ -1,4 +1,3 @@
-
 import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -12,18 +11,18 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: 'Turnamen', href: '/tournaments' },
-    { name: 'Jadwal', href: '/schedule' },
-    { name: 'Ranking', href: '/rankings' },
-    { name: 'Berita & Update', href: '/news-updates' },
-    { name: 'Komunitas', href: '/community' },
+    { name: 'Tournaments', href: '/tournaments' },
+    { name: 'Schedule', href: '/schedule' },
+    { name: 'Rankings', href: '/rankings' },
+    { name: 'News & Updates', href: '/news-updates' },
+    { name: 'Community', href: '/community' },
   ];
 
   const supportLinks = [
-    { name: 'Pusat Bantuan', href: '/help-center' },
-    { name: 'Hubungi Kami', href: '/contact-us' },
-    { name: 'Aturan Turnamen', href: '/tournament-rules' },
-    { name: 'Kebijakan Privasi', href: '/privacy-policy' },
+    { name: 'Help Center', href: '/help-center' },
+    { name: 'Contact Us', href: '/contact-us' },
+    { name: 'Tournament Rules', href: '/tournament-rules' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
   ];
 
   const handleSupportLinkClick = () => {
@@ -57,8 +56,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Penyelenggara turnamen esports terdepan di Asia Tenggara, 
-              menciptakan legenda melalui keunggulan kompetitif.
+              Southeast Asia's premier esports tournament organizer, 
+              forging legends through competitive excellence.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => {
@@ -67,8 +66,8 @@ const Footer = () => {
                   <a
                     key={social.name}
                     href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target="_blank"  // <-- Tambahkan ini
+                    rel="noopener noreferrer" // <-- Tambahkan ini untuk keamanan
                     className="w-10 h-10 bg-card/50 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 border border-border/50"
                   >
                     <Icon className="h-5 w-5" />
@@ -80,7 +79,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-orbitron text-lg font-bold mb-6 text-foreground">Tautan Cepat</h3>
+            <h3 className="font-orbitron text-lg font-bold mb-6 text-foreground">Quick Links</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -98,7 +97,7 @@ const Footer = () => {
 
           {/* Support */}
           <div>
-            <h3 className="font-orbitron text-lg font-bold mb-6 text-foreground">Dukungan</h3>
+            <h3 className="font-orbitron text-lg font-bold mb-6 text-foreground">Support</h3>
             <ul className="space-y-3">
               {supportLinks.map((link) => (
                 <li key={link.name}>
@@ -116,7 +115,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="font-orbitron text-lg font-bold mb-6 text-foreground">Kontak</h3>
+            <h3 className="font-orbitron text-lg font-bold mb-6 text-foreground">Contact</h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
@@ -140,21 +139,21 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-border/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-center md:text-left">
-            © 2024 Arjuna Esports. Semua hak dilindungi.
+            © 2024 Arjuna Esports. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              Syarat Layanan
+              Terms of Service
             </a>
             <Link 
               to="/privacy-policy" 
               onClick={handleSupportLinkClick}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              Kebijakan Privasi
+              Privacy Policy
             </Link>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              Kebijakan Cookie
+              Cookie Policy
             </a>
           </div>
         </div>

@@ -16,12 +16,12 @@ const StorySection = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 animate-fade-in-up">
           <h2 className="font-orbitron text-4xl md:text-6xl font-black mb-6">
-            WARISAN <span className="gradient-text">KAMI</span>
+            OUR <span className="gradient-text">LEGACY</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Dari awal yang sederhana hingga pengakuan global, Arjuna Esports telah berada 
-            di garis depan evolusi gaming kompetitif Mobile Legends. Setiap turnamen menceritakan kisah, 
-            setiap kemenangan menulis sejarah.
+            From humble beginnings to global recognition, Arjuna Esports has been 
+            at the forefront of Mobile Legends competitive gaming evolution. Every tournament tells a story, 
+            every victory writes history.
           </p>
         </div>
 
@@ -29,21 +29,21 @@ const StorySection = () => {
         <div className="text-center mt-20 animate-fade-in-up">
           <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-12 backdrop-blur-sm border border-border/50">
             <h3 className="font-orbitron text-3xl font-bold mb-4">
-              Jadilah Bagian dari <span className="gradient-text">Bab Selanjutnya</span>
+              Be Part of <span className="gradient-text">The Next Chapter</span>
             </h3>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Bergabunglah dengan ribuan pemain Mobile Legends elit yang mempercayai Arjuna Esports 
-              untuk memberikan pengalaman kompetitif kelas dunia.
+              Join thousands of elite Mobile Legends players who trust Arjuna Esports to deliver 
+              world-class competitive experiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/community" onClick={handleScrollToTop}>
                 <button className="bg-primary hover:bg-primary/90 text-primary-foreground font-orbitron font-bold px-8 py-4 rounded-lg glow-effect transition-all">
-                  Bergabung dengan Komunitas
+                  Join Our Community
                 </button>
               </Link>
               <Link to="/contact-us" onClick={handleScrollToTop}>
                 <button className="border border-primary/50 text-primary hover:bg-primary/10 font-orbitron font-bold px-8 py-4 rounded-lg transition-all">
-                  Bermitra dengan Kami
+                  Partner With Us
                 </button>
               </Link>
             </div>
