@@ -94,13 +94,13 @@ const TournamentServices = () => {
       });
 
       // Admin notification (this would be visible to you as the owner)
-      setTimeout(() => {
-        toast({
-          title: "🔔 Pesanan Baru Masuk!",
-          description: `Pelanggan baru: ${customerData.name} memesan ${selectedService.title} (${selectedService.price})`,
-          duration: 8000,
-        });
-      }, 1000);
+      // setTimeout(() => {
+      //   toast({
+      //     title: "🔔 Pesanan Baru Masuk!",
+      //     description: `Pelanggan baru: ${customerData.name} memesan ${selectedService.title} (${selectedService.price})`,
+      //     duration: 8000,
+      //   });
+      // }, 1000);
 
       // Reset form
       setCustomerData({ name: '', email: '', phone: '', notes: '' });
