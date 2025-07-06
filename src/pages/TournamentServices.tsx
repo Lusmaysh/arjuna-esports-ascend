@@ -4,11 +4,25 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Trophy, Users, Calendar, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+import { useState } from 'react';
 
 const TournamentServices = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedService, setSelectedService] = useState<{title: string, price: string} | null>(null);
+  const [customerData, setCustomerData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    notes: ''
+  });
 
   const services = [
     {
@@ -47,30 +61,67 @@ const TournamentServices = () => {
     }
   ];
 
-  const handleContactService = (serviceTitle: string, servicePrice: string) => {
-    // Show success notification to user
-    toast({
-      title: "Pesanan Berhasil Dikirim!",
-      description: `Terima kasih atas minat Anda pada ${serviceTitle}. Tim kami akan segera menghubungi Anda!`,
-      duration: 5000,
-    });
+  const handleOrderSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedService) return;
+    
+    setIsSubmitting(true);
 
-    // Show admin notification (in a real app, this would be sent to your backend)
-    setTimeout(() => {
+    try {
+      const { data, error } = await supabase
+        .from('service_orders')
+        .insert({
+          customer_name: customerData.name,
+          customer_email: customerData.email,
+          customer_phone: customerData.phone,
+          service_title: selectedService.title,
+          service_price: selectedService.price,
+          notes: customerData.notes,
+          status: 'pending'
+        })
+        .select()
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      // Success notification for customer
       toast({
-        title: "🔔 Pesanan Baru Masuk!",
-        description: `Pelanggan baru memesan: ${serviceTitle} (${servicePrice})`,
-        duration: 8000,
+        title: "Pesanan Berhasil Dikirim! ✅",
+        description: `Terima kasih ${customerData.name}! Pesanan Anda untuk ${selectedService.title} telah diterima. Kami akan segera menghubungi Anda.`,
+        duration: 5000,
       });
-    }, 1000);
 
-    // Log the order details (in a real app, this would be sent to your backend/analytics)
-    console.log('New service order:', {
-      package: serviceTitle,
-      price: servicePrice,
-      timestamp: new Date().toISOString(),
-      userId: 'anonymous', // In a real app, you'd have user authentication
-    });
+      // Admin notification (this would be visible to you as the owner)
+      setTimeout(() => {
+        toast({
+          title: "🔔 Pesanan Baru Masuk!",
+          description: `Pelanggan baru: ${customerData.name} memesan ${selectedService.title} (${selectedService.price})`,
+          duration: 8000,
+        });
+      }, 1000);
+
+      // Reset form
+      setCustomerData({ name: '', email: '', phone: '', notes: '' });
+      setSelectedService(null);
+
+      console.log('New service order created:', data);
+    } catch (error) {
+      console.error('Error creating service order:', error);
+      toast({
+        title: "Terjadi Kesalahan",
+        description: "Gagal mengirim pesanan. Silakan coba lagi.",
+        variant: "destructive",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const openOrderDialog = (service: {title: string, price: string}) => {
+    setSelectedService(service);
   };
 
   return (
@@ -127,13 +178,77 @@ const TournamentServices = () => {
                         ))}
                       </ul>
                       
-                      <Button 
-                        className="w-full font-semibold"
-                        size="lg"
-                        onClick={() => handleContactService(service.title, service.price)}
-                      >
-                        Pilih Paket Ini
-                      </Button>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button 
+                            className="w-full font-semibold"
+                            size="lg"
+                            onClick={() => openOrderDialog(service)}
+                          >
+                            Pilih Paket Ini
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                          <DialogHeader>
+                            <DialogTitle>Pesan {selectedService?.title}</DialogTitle>
+                            <DialogDescription>
+                              Isi informasi Anda dan kami akan menghubungi Anda segera.
+                            </DialogDescription>
+                          </DialogHeader>
+                          <form onSubmit={handleOrderSubmit} className="space-y-4">
+                            <div className="space-y-2">
+                              <Label htmlFor="name">Nama Lengkap *</Label>
+                              <Input
+                                id="name"
+                                value={customerData.name}
+                                onChange={(e) => setCustomerData(prev => ({...prev, name: e.target.value}))}
+                                required
+                                placeholder="Masukkan nama lengkap Anda"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="email">Email *</Label>
+                              <Input
+                                id="email"
+                                type="email"
+                                value={customerData.email}
+                                onChange={(e) => setCustomerData(prev => ({...prev, email: e.target.value}))}
+                                required
+                                placeholder="nama@email.com"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="phone">Nomor Telepon *</Label>
+                              <Input
+                                id="phone"
+                                value={customerData.phone}
+                                onChange={(e) => setCustomerData(prev => ({...prev, phone: e.target.value}))}
+                                required
+                                placeholder="08xxxxxxxxxx"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="notes">Catatan Tambahan</Label>
+                              <Textarea
+                                id="notes"
+                                value={customerData.notes}
+                                onChange={(e) => setCustomerData(prev => ({...prev, notes: e.target.value}))}
+                                placeholder="Ceritakan tentang turnamen yang ingin Anda selenggarakan..."
+                                rows={3}
+                              />
+                            </div>
+                            <div className="bg-muted p-4 rounded-lg">
+                              <p className="text-sm text-muted-foreground">
+                                <strong>Paket:</strong> {selectedService?.title}<br />
+                                <strong>Harga:</strong> {selectedService?.price}
+                              </p>
+                            </div>
+                            <Button type="submit" className="w-full" disabled={isSubmitting}>
+                              {isSubmitting ? 'Mengirim...' : 'Kirim Pesanan'}
+                            </Button>
+                          </form>
+                        </DialogContent>
+                      </Dialog>
                     </CardContent>
                   </Card>
                 );
