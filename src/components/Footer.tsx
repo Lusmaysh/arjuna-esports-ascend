@@ -1,3 +1,4 @@
+
 import { Trophy, Mail, MapPin, Phone, Twitter, Youtube, Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ const Footer = () => {
     { name: 'Help Center', href: '/help-center' },
     { name: 'Contact Us', href: '/contact-us' },
     { name: 'Tournament Rules', href: '/tournament-rules' },
+    { name: 'Visi & Misi', href: '/visi-misi' },
     { name: 'Privacy Policy', href: '/privacy-policy' },
   ];
 

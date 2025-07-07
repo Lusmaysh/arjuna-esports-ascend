@@ -17,6 +17,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Schedule from "./pages/Schedule";
 import Rankings from "./pages/Rankings";
 import NewsUpdates from "./pages/NewsUpdates";
+import VisiMisi from "./pages/VisiMisi";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/visi-misi" element={<VisiMisi />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
