@@ -53,6 +53,54 @@ export type Database = {
         }
         Relationships: []
       }
+      tournaments: {
+        Row: {
+          created_at: string
+          date_held: string
+          description: string | null
+          game: string
+          id: string
+          location: string
+          name: string
+          number_of_teams: number
+          prize_pool: number
+          registration_fee: number
+          registration_link: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date_held: string
+          description?: string | null
+          game: string
+          id?: string
+          location: string
+          name: string
+          number_of_teams?: number
+          prize_pool?: number
+          registration_fee?: number
+          registration_link?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date_held?: string
+          description?: string | null
+          game?: string
+          id?: string
+          location?: string
+          name?: string
+          number_of_teams?: number
+          prize_pool?: number
+          registration_fee?: number
+          registration_link?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
