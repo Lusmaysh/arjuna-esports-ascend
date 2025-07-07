@@ -58,8 +58,10 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Indonesian's premier esports tournament organizer, 
-              forging legends through competitive excellence.
+              Penyelenggara turnamen esports terkemuka di Indonesia,
+              menempa para legenda melalui keunggulan kompetitif.
+              {/* Indonesian's premier esports tournament organizer, 
+              forging legends through competitive excellence. */}
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => {

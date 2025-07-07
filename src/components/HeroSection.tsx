@@ -29,7 +29,8 @@ const HeroSection = () => {
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          Indonesian's Premier Mobile Legends Tournament Organizer. Where Legends Are Forged and Champions Rise.
+          Penyelenggara Turnamen Mobile Legends Terkemuka di Indonesia. Tempat Para Legenda Ditempa dan Para Juara Muncul.
+          {/* Indonesian's Premier Mobile Legends Tournament Organizer. Where Legends Are Forged and Champions Rise. */}
         </p>
 
         {/* CTA Buttons */}

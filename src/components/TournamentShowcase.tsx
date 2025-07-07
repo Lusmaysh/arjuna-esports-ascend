@@ -52,8 +52,9 @@ const TournamentShowcase = () => {
             <span className="gradient-text">ELITE</span> TOURNAMENTS
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Compete at the highest level. Our tournaments feature the best teams, 
-            biggest prize pools, and most intense competition in esports.
+            Berkompetisi di level tertinggi. Turnamen kami menampilkan tim-tim terbaik, hadiah terbesar, dan kompetisi paling ketat dalam esports.
+            {/* Compete at the highest level. Our tournaments feature the best teams, 
+            biggest prize pools, and most intense competition in esports. */}
           </p>
         </div>
 

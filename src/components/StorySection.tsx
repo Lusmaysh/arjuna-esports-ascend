@@ -19,9 +19,12 @@ const StorySection = () => {
             OUR <span className="gradient-text">LEGACY</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            From humble beginnings to global recognition, Arjuna Esports has been 
+            Dari awal yang sederhana hingga pengakuan global, Arjuna Esports telah
+            berada di garis depan evolusi game kompetitif Mobile Legends. Setiap turnamen memiliki cerita,
+            setiap kemenangan menulis sejarah.
+            {/* From humble beginnings to global recognition, Arjuna Esports has been 
             at the forefront of Mobile Legends competitive gaming evolution. Every tournament tells a story, 
-            every victory writes history.
+            every victory writes history. */}
           </p>
         </div>
 
@@ -32,8 +35,10 @@ const StorySection = () => {
               Be Part of <span className="gradient-text">The Next Chapter</span>
             </h3>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of elite Mobile Legends players who trust Arjuna Esports to deliver 
-              world-class competitive experiences.
+              Bergabunglah dengan ribuan pemain elit Mobile Legends yang mempercayai Arjuna Esports untuk memberikan
+              pengalaman kompetitif kelas dunia.
+              {/* Join thousands of elite Mobile Legends players who trust Arjuna Esports to deliver 
+              world-class competitive experiences. */}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/community" onClick={handleScrollToTop}>
