@@ -58,7 +58,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Southeast Asia's premier esports tournament organizer, 
+              Indonesian's premier esports tournament organizer, 
               forging legends through competitive excellence.
             </p>
             <div className="flex gap-4">

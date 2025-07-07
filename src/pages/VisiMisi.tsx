@@ -19,7 +19,7 @@ const VisiMisi = () => {
               </h1>
             </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Membangun ekosistem esports terbaik di Asia Tenggara dengan dedikasi tinggi 
+              Membangun ekosistem esports terbaik di Indonesia dengan dedikasi tinggi 
               untuk menciptakan turnamen berkualitas tinggi.
             </p>
           </div>
@@ -37,9 +37,11 @@ const VisiMisi = () => {
             
             <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 md:p-12">
               <blockquote className="text-xl md:text-2xl text-center leading-relaxed text-foreground font-medium">
-                "Menjadi platform esports terdepan di Asia Tenggara yang menghadirkan 
-                turnamen berkualitas tinggi, membangun komunitas gaming yang solid, 
-                dan menciptakan peluang karir bagi para pemain profesional."
+                "Arjuna Event Organizer memiliki visi untuk menjadi penyelenggara turnamen Mobile
+                Legends terdepan di Indonesia yang profesional, terpercaya, dan mampu membangun komunitas
+                e-sports yang kompetitif serta positif. Kami ingin menjadi tempat di mana para pemain
+                dari berbagai kalangan bisa menunjukkan potensi terbaik mereka dalam suasana turnamen yang
+                adil dan berkualitas."
               </blockquote>
             </div>
           </div>
@@ -62,8 +64,13 @@ const VisiMisi = () => {
                   <h3 className="font-orbitron text-lg font-bold">Turnamen Berkualitas</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Menyelenggarakan turnamen esports dengan standar internasional, 
-                  sistem yang fair, dan prize pool yang menarik.
+                  Menyelenggarakan turnamen Mobile
+                  Legends dengan sistem yang adil,
+                  terstruktur, dan berkualitas tinggi, yang
+                  dapat diikuti oleh pemain dari berbagai
+                  level baik pemula maupun profesional.
+                  {/* Menyelenggarakan turnamen esports dengan standar internasional, 
+                  sistem yang fair, dan prize pool yang menarik. */}
                 </p>
               </div>
 
@@ -73,8 +80,14 @@ const VisiMisi = () => {
                   <h3 className="font-orbitron text-lg font-bold">Membangun Komunitas</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Menciptakan komunitas gaming yang positif, inklusif, dan 
-                  mendukung pertumbuhan talenta esports lokal.
+                  Membangun dan memperkuat
+                  komunitas e-sports lokal dengan
+                  menghadirkan event-event yang
+                  mendorong interaksi positif,
+                  kolaborasitim, dan semangat
+                  sportivitas antar pemain.
+                  {/* Menciptakan komunitas gaming yang positif, inklusif, dan 
+                  mendukung pertumbuhan talenta esports lokal. */}
                 </p>
               </div>
 
@@ -84,8 +97,13 @@ const VisiMisi = () => {
                   <h3 className="font-orbitron text-lg font-bold">Pengembangan Talent</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Memberikan platform dan kesempatan bagi pemain untuk 
-                  mengembangkan skill dan berkarir di dunia esports.
+                  Menjadi jembatan bagi para
+                  pemain muda berbakat agar bisa
+                  berkembang lebih jauh dan
+                  mendapat pengakuan di dunia esports,
+                  baik di tingkat lokal maupun nasional.
+                  {/* Memberikan platform dan kesempatan bagi pemain untuk 
+                  mengembangkan skill dan berkarir di dunia esports. */}
                 </p>
               </div>
 
@@ -118,7 +136,7 @@ const VisiMisi = () => {
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
                   Membangun kerjasama strategis dengan organisasi esports 
-                  se-Asia Tenggara untuk pertumbuhan bersama.
+                  se-Indonesia untuk pertumbuhan bersama.
                 </p>
               </div>
             </div>

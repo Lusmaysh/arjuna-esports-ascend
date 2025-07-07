@@ -90,7 +90,8 @@ ${formData.message}`;
               Contact Us
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Get in touch with the Arjuna Esports team. We're here to help with any questions or concerns.
+              Hubungi tim Arjuna Esports. Kami siap membantu dengan pertanyaan atau masalah apa pun.
+              {/* Get in touch with the Arjuna Esports team. We're here to help with any questions or concerns. */}
             </p>
           </div>
 
