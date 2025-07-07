@@ -12,31 +12,24 @@ const Schedule = () => {
     {
       date: "2025-07-10",
       time: "19:00 WIB",
-      tournament: "Mobile Legends Championship",
-      teams: "Team Alpha vs Team Beta",
+      tournament: "Kejuaraan Mobile Legends",
+      teams: "Tim Alpha vs Tim Beta",
       venue: "Online"
     },
     {
       date: "2025-08-18",
       time: "20:00 WIB",
-      tournament: "Mobile Legends Tournament",
+      tournament: "Turnamen Mobile Legends",
       teams: "Fire Squad vs Lightning Bolt",
       venue: "Pekalongan Gaming Hub"
     },
     {
       date: "2025-09-22",
       time: "18:30 WIB",
-      tournament: "Mobile Legends Cup",
+      tournament: "Piala Mobile Legends",
       teams: "Alpha vs Beta",
       venue: "Online"
     },
-    // {
-    //   date: "2024-01-25",
-    //   time: "19:30 WIB",
-    //   tournament: "Valorant Regional",
-    //   teams: "Phoenix vs Storm",
-    //   venue: "Online"
-    // }
   ];
 
   return (
@@ -50,17 +43,17 @@ const Schedule = () => {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Calendar className="h-8 w-8 text-primary" />
               <h1 className="font-orbitron text-4xl font-black gradient-text">
-                Tournament Schedule
+                Jadwal Turnamen
               </h1>
             </div>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Stay up to date with all upcoming tournaments and matches. Don't miss your chance to compete!
+              Tetap up-to-date dengan semua turnamen dan pertandingan yang akan datang. Jangan lewatkan kesempatan untuk berkompetisi!
             </p>
           </div>
 
           {/* Upcoming Matches */}
           <div className="mb-12">
-            <h2 className="font-orbitron text-2xl font-bold mb-6">Upcoming Matches</h2>
+            <h2 className="font-orbitron text-2xl font-bold mb-6">Pertandingan Mendatang</h2>
             <div className="grid gap-6">
               {upcomingMatches.map((match, index) => (
                 <div key={index} className="bg-card/50 border border-border/50 rounded-lg p-6">
@@ -90,7 +83,7 @@ const Schedule = () => {
                     
                     <div className="text-right">
                       <Button size="sm" variant="outline">
-                        View Details
+                        Lihat Detail
                       </Button>
                     </div>
                   </div>
@@ -103,23 +96,23 @@ const Schedule = () => {
           <div className="bg-card/30 border border-border/50 rounded-lg p-8 mb-8">
             <div className="flex items-center gap-3 mb-6">
               <Trophy className="h-6 w-6 text-primary" />
-              <h2 className="font-orbitron text-2xl font-bold">This Month's Tournaments</h2>
+              <h2 className="font-orbitron text-2xl font-bold">Turnamen Bulan Ini</h2>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <h3 className="font-semibold">Mobile Legends</h3>
                 <div className="space-y-2 text-muted-foreground">
-                  <p>• Weekly Championship - Every Friday</p>
-                  <p>• Monthly Cup - Last Sunday</p>
-                  <p>• Beginner's Tournament - 2nd Saturday</p>
+                  <p>• Kejuaraan Mingguan - Setiap Jumat</p>
+                  <p>• Piala Bulanan - Minggu Terakhir</p>
+                  <p>• Turnamen Pemula - Sabtu Kedua</p>
                 </div>
               </div>
               <div className="space-y-4">
-                <h3 className="font-semibold">Other Games</h3>
+                <h3 className="font-semibold">Game Lainnya</h3>
                 <div className="space-y-2 text-muted-foreground">
-                  <p>• Free Fire Battle - Every Tuesday</p>
-                  <p>• PUBG Mobile - Every Thursday</p>
-                  <p>• Valorant Regional - Monthly</p>
+                  <p>• Pertempuran Free Fire - Setiap Selasa</p>
+                  <p>• PUBG Mobile - Setiap Kamis</p>
+                  <p>• Regional Valorant - Bulanan</p>
                 </div>
               </div>
             </div>
@@ -132,7 +125,7 @@ const Schedule = () => {
               variant="outline"
               className="font-orbitron"
             >
-              Back to Home
+              Kembali ke Beranda
             </Button>
           </div>
         </div>

@@ -11,47 +11,47 @@ const NewsUpdates = () => {
   const newsArticles = [
     {
       id: 1,
-      title: "Mobile Legends Championship 2024 Announced",
-      excerpt: "The biggest Mobile Legends tournament of the year is coming with a massive prize pool of $50,000. Registration opens next week.",
+      title: "Kejuaraan Mobile Legends 2024 Diumumkan",
+      excerpt: "Turnamen Mobile Legends terbesar tahun ini hadir dengan hadiah fantastis senilai $50,000. Pendaftaran dibuka minggu depan.",
       date: "2024-01-10",
-      author: "Tournament Team",
-      category: "Tournament",
+      author: "Tim Turnamen",
+      category: "Turnamen",
       featured: true
     },
     {
       id: 2,
-      title: "New Gaming Hub Opens in Pekalongan",
-      excerpt: "State-of-the-art gaming facility with high-end equipment now available for practice sessions and local tournaments.",
+      title: "Gaming Hub Baru Dibuka di Pekalongan",
+      excerpt: "Fasilitas gaming canggih dengan peralatan berkelas tinggi kini tersedia untuk sesi latihan dan turnamen lokal.",
       date: "2024-01-08",
-      author: "News Team",
-      category: "Facility",
+      author: "Tim Berita",
+      category: "Fasilitas",
       featured: false
     },
     {
       id: 3,
-      title: "Interview with Champion DragonSlayer",
-      excerpt: "Get insights from our current #1 ranked player about their journey to the top and upcoming strategies.",
+      title: "Wawancara dengan Juara DragonSlayer",
+      excerpt: "Dapatkan wawasan dari pemain berperingkat #1 kami tentang perjalanan mereka ke puncak dan strategi mendatang.",
       date: "2024-01-05",
-      author: "Media Team",
-      category: "Player Spotlight",
+      author: "Tim Media",
+      category: "Sorotan Pemain",
       featured: false
     },
     {
       id: 4,
-      title: "Mobile Legends Tournament Rules Updated",
-      excerpt: "Important changes to tournament format and rules. All participants should review the updated guidelines.",
+      title: "Aturan Turnamen Mobile Legends Diperbarui",
+      excerpt: "Perubahan penting pada format turnamen dan aturan. Semua peserta harus meninjau pedoman yang diperbarui.",
       date: "2024-01-03",
-      author: "Rules Committee",
-      category: "Updates",
+      author: "Komite Aturan",
+      category: "Pembaruan",
       featured: false
     },
     {
       id: 5,
-      title: "Partnership with Local Gaming Cafes",
-      excerpt: "We're expanding our network with strategic partnerships to bring tournaments closer to players across the region.",
+      title: "Kemitraan dengan Warnet Gaming Lokal",
+      excerpt: "Kami memperluas jaringan dengan kemitraan strategis untuk membawa turnamen lebih dekat ke pemain di seluruh wilayah.",
       date: "2024-01-01",
-      author: "Business Team",
-      category: "Partnership",
+      author: "Tim Bisnis",
+      category: "Kemitraan",
       featured: false
     }
   ];
@@ -70,11 +70,11 @@ const NewsUpdates = () => {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Newspaper className="h-8 w-8 text-primary" />
               <h1 className="font-orbitron text-4xl font-black gradient-text">
-                News & Updates
+                Berita & Pembaruan
               </h1>
             </div>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Stay informed with the latest news, tournament announcements, and updates from Arjuna Esports.
+              Tetap terinformasi dengan berita terbaru, pengumuman turnamen, dan pembaruan dari Arjuna Esports.
             </p>
           </div>
 
@@ -84,7 +84,7 @@ const NewsUpdates = () => {
               <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-8">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                    Featured
+                    Unggulan
                   </span>
                   <span className="text-primary font-semibold">{featuredNews.category}</span>
                 </div>
@@ -102,7 +102,7 @@ const NewsUpdates = () => {
                     </div>
                   </div>
                   <Button>
-                    Read More
+                    Baca Selengkapnya
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </div>
@@ -112,7 +112,7 @@ const NewsUpdates = () => {
 
           {/* Regular News */}
           <div className="mb-12">
-            <h2 className="font-orbitron text-2xl font-bold mb-6">Latest Updates</h2>
+            <h2 className="font-orbitron text-2xl font-bold mb-6">Pembaruan Terbaru</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {regularNews.map((news) => (
                 <div key={news.id} className="bg-card/50 border border-border/50 rounded-lg p-6 hover:bg-card/70 transition-colors">
@@ -135,7 +135,7 @@ const NewsUpdates = () => {
                       </div>
                     </div>
                     <Button size="sm" variant="outline">
-                      Read More
+                      Baca Selengkapnya
                     </Button>
                   </div>
                 </div>
@@ -146,17 +146,17 @@ const NewsUpdates = () => {
           {/* Newsletter Signup */}
           <div className="bg-card/30 border border-border/50 rounded-lg p-8 mb-8">
             <div className="text-center max-w-2xl mx-auto">
-              <h2 className="font-orbitron text-2xl font-bold mb-4">Stay Updated</h2>
+              <h2 className="font-orbitron text-2xl font-bold mb-4">Tetap Terupdate</h2>
               <p className="text-muted-foreground mb-6">
-                Subscribe to our newsletter to get the latest tournament announcements and esports news delivered to your inbox.
+                Berlangganan newsletter kami untuk mendapatkan pengumuman turnamen terbaru dan berita esports langsung ke inbox Anda.
               </p>
               <div className="flex gap-4 max-w-md mx-auto">
                 <input 
                   type="email" 
-                  placeholder="your.email@example.com"
+                  placeholder="email.anda@example.com"
                   className="flex-1 px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                 />
-                <Button>Subscribe</Button>
+                <Button>Berlangganan</Button>
               </div>
             </div>
           </div>
@@ -168,7 +168,7 @@ const NewsUpdates = () => {
               variant="outline"
               className="font-orbitron"
             >
-              Back to Home
+              Kembali ke Beranda
             </Button>
           </div>
         </div>
