@@ -35,11 +35,13 @@ const Rankings = () => {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Trophy className="h-8 w-8 text-primary" />
               <h1 className="font-orbitron text-4xl font-black gradient-text">
-                Player Rankings
+                Peringkat Pemain
+                {/* Player Rankings */}
               </h1>
             </div>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              See who's dominating the leaderboards across all our tournaments and competitions.
+              Lihat siapa yang mendominasi papan peringkat di semua turnamen dan kompetisi kami.
+              {/* See who's dominating the leaderboards across all our tournaments and competitions. */}
             </p>
           </div>
 
