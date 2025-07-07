@@ -1,3 +1,4 @@
+
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { Trophy, Users, Calendar, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -16,7 +18,7 @@ const TournamentServices = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<{title: string, price: string} | null>(null);
+  const [selectedService, setSelectedService] = useState<{title: string, price: number, displayPrice: string} | null>(null);
   const [customerData, setCustomerData] = useState({
     name: '',
     email: '',
@@ -28,7 +30,8 @@ const TournamentServices = () => {
     {
       id: 1,
       title: 'Tournament Organization',
-      price: '500.000',
+      price: 500000,
+      displayPrice: 'Rp 500.000',
       description: 'Layanan penyelenggaraan turnamen esports profesional',
       features: [
         'Setup dan konfigurasi turnamen',
@@ -44,7 +47,8 @@ const TournamentServices = () => {
     {
       id: 2,
       title: 'Full Tournament Package',
-      price: '750.000',
+      price: 750000,
+      displayPrice: 'Rp 750.000',
       description: 'Paket lengkap turnamen termasuk recruitment pemain',
       features: [
         'Semua fitur Tournament Organization',
@@ -75,7 +79,7 @@ const TournamentServices = () => {
           customer_email: customerData.email,
           customer_phone: customerData.phone,
           service_title: selectedService.title,
-          service_price: selectedService.price,
+          service_price: selectedService.price.toString(),
           notes: customerData.notes,
           status: 'pending'
         })
@@ -114,7 +118,7 @@ const TournamentServices = () => {
     }
   };
 
-  const openOrderDialog = (service: {title: string, price: string}) => {
+  const openOrderDialog = (service: {title: string, price: number, displayPrice: string}) => {
     setSelectedService(service);
     setIsDialogOpen(true);
   };
@@ -156,7 +160,7 @@ const TournamentServices = () => {
                       </div>
                       <CardTitle className="text-2xl font-orbitron">{service.title}</CardTitle>
                       <div className="text-3xl font-bold text-primary font-orbitron">
-                        Rp {service.price}
+                        {service.displayPrice}
                       </div>
                       <CardDescription className="text-base">
                         {service.description}
@@ -183,65 +187,69 @@ const TournamentServices = () => {
                             Pilih Paket Ini
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
-                          <DialogHeader>
-                            <DialogTitle>Pesan {selectedService?.title}</DialogTitle>
-                            <DialogDescription>
-                              Isi informasi Anda dan kami akan menghubungi Anda segera.
-                            </DialogDescription>
-                          </DialogHeader>
-                          <form onSubmit={handleOrderSubmit} className="space-y-4">
-                            <div className="space-y-2">
-                              <Label htmlFor="name">Nama Lengkap *</Label>
-                              <Input
-                                id="name"
-                                value={customerData.name}
-                                onChange={(e) => setCustomerData(prev => ({...prev, name: e.target.value}))}
-                                required
-                                placeholder="Masukkan nama lengkap Anda"
-                              />
+                        <DialogContent className="sm:max-w-[425px] max-h-[90vh] p-0">
+                          <ScrollArea className="max-h-[90vh]">
+                            <div className="p-6">
+                              <DialogHeader className="mb-4">
+                                <DialogTitle>Pesan {selectedService?.title}</DialogTitle>
+                                <DialogDescription>
+                                  Isi informasi Anda dan kami akan menghubungi Anda segera.
+                                </DialogDescription>
+                              </DialogHeader>
+                              <form onSubmit={handleOrderSubmit} className="space-y-4">
+                                <div className="space-y-2">
+                                  <Label htmlFor="name">Nama Lengkap *</Label>
+                                  <Input
+                                    id="name"
+                                    value={customerData.name}
+                                    onChange={(e) => setCustomerData(prev => ({...prev, name: e.target.value}))}
+                                    required
+                                    placeholder="Masukkan nama lengkap Anda"
+                                  />
+                                </div>
+                                <div className="space-y-2">
+                                  <Label htmlFor="email">Email *</Label>
+                                  <Input
+                                    id="email"
+                                    type="email"
+                                    value={customerData.email}
+                                    onChange={(e) => setCustomerData(prev => ({...prev, email: e.target.value}))}
+                                    required
+                                    placeholder="nama@email.com"
+                                  />
+                                </div>
+                                <div className="space-y-2">
+                                  <Label htmlFor="phone">Nomor Telepon *</Label>
+                                  <Input
+                                    id="phone"
+                                    value={customerData.phone}
+                                    onChange={(e) => setCustomerData(prev => ({...prev, phone: e.target.value}))}
+                                    required
+                                    placeholder="08xxxxxxxxxx"
+                                  />
+                                </div>
+                                <div className="space-y-2">
+                                  <Label htmlFor="notes">Catatan Tambahan</Label>
+                                  <Textarea
+                                    id="notes"
+                                    value={customerData.notes}
+                                    onChange={(e) => setCustomerData(prev => ({...prev, notes: e.target.value}))}
+                                    placeholder="Ceritakan tentang turnamen yang ingin Anda selenggarakan..."
+                                    rows={3}
+                                  />
+                                </div>
+                                <div className="bg-muted p-4 rounded-lg">
+                                  <p className="text-sm text-muted-foreground">
+                                    <strong>Paket:</strong> {selectedService?.title}<br />
+                                    <strong>Harga:</strong> {selectedService?.displayPrice}
+                                  </p>
+                                </div>
+                                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                                  {isSubmitting ? 'Mengirim...' : 'Kirim Pesanan'}
+                                </Button>
+                              </form>
                             </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="email">Email *</Label>
-                              <Input
-                                id="email"
-                                type="email"
-                                value={customerData.email}
-                                onChange={(e) => setCustomerData(prev => ({...prev, email: e.target.value}))}
-                                required
-                                placeholder="nama@email.com"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="phone">Nomor Telepon *</Label>
-                              <Input
-                                id="phone"
-                                value={customerData.phone}
-                                onChange={(e) => setCustomerData(prev => ({...prev, phone: e.target.value}))}
-                                required
-                                placeholder="08xxxxxxxxxx"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="notes">Catatan Tambahan</Label>
-                              <Textarea
-                                id="notes"
-                                value={customerData.notes}
-                                onChange={(e) => setCustomerData(prev => ({...prev, notes: e.target.value}))}
-                                placeholder="Ceritakan tentang turnamen yang ingin Anda selenggarakan..."
-                                rows={3}
-                              />
-                            </div>
-                            <div className="bg-muted p-4 rounded-lg">
-                              <p className="text-sm text-muted-foreground">
-                                <strong>Paket:</strong> {selectedService?.title}<br />
-                                <strong>Harga:</strong> {selectedService?.price}
-                              </p>
-                            </div>
-                            <Button type="submit" className="w-full" disabled={isSubmitting}>
-                              {isSubmitting ? 'Mengirim...' : 'Kirim Pesanan'}
-                            </Button>
-                          </form>
+                          </ScrollArea>
                         </DialogContent>
                       </Dialog>
                     </CardContent>
