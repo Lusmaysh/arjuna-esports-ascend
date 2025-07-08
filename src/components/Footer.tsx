@@ -54,7 +54,7 @@ const Footer = () => {
               <div className="font-orbitron text-2xl font-black">
                 <span className="gradient-text">ARJUNA</span>
                 <br />
-                <span className="text-foreground">ESPORTS</span>
+                <span className="text-foreground"></span>
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed">

@@ -44,7 +44,7 @@ const Navigation = () => {
             <div className="flex items-center">
               <div className="font-orbitron text-2xl font-black">
                 <span className="gradient-text">ARJUNA</span>
-                <span className="text-foreground ml-2">ESPORTS</span>
+                <span className="text-foreground ml-2"></span>
               </div>
             </div>
           </Link>

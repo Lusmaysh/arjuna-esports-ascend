@@ -23,7 +23,8 @@ const HeroSection = () => {
             <span className="gradient-text text-glow">ARJUNA</span>
           </h1>
           <h2 className="font-orbitron text-2xl md:text-4xl lg:text-5xl font-bold text-muted-foreground">
-            ESPORTS CHAMPIONSHIP
+            EVENT ORGANIZER
+            {/* ESPORTS CHAMPIONSHIP */}
           </h2>
         </div>
 
