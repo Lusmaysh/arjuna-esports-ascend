@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Trophy, Users, DollarSign, Calendar } from 'lucide-react';
+import { Trophy, Users, DollarSign, Calendar, CreditCard } from 'lucide-react';
 import { useTournaments } from '@/hooks/useTournaments';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -17,6 +17,10 @@ const TournamentShowcase = () => {
       currency: 'IDR',
       minimumFractionDigits: 0,
     }).format(amount);
+  };
+
+  const formatRegistrationFee = (fee: number) => {
+    return fee === 0 ? 'FREE' : formatCurrency(fee);
   };
 
   const formatDate = (dateString: string) => {
@@ -156,9 +160,15 @@ const TournamentShowcase = () => {
                       <Users className="h-5 w-5 text-accent" />
                       <span>{featuredTournament.number_of_teams} Teams</span>
                     </div>
-                    <div className="flex items-center gap-2 col-span-2">
+                    <div className="flex items-center gap-2">
                       <Calendar className="h-5 w-5 text-muted-foreground" />
                       <span>{formatDate(featuredTournament.date_held)}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CreditCard className="h-5 w-5 text-muted-foreground" />
+                      <span className={`font-semibold ${featuredTournament.registration_fee === 0 ? 'text-green-600' : 'text-orange-600'}`}>
+                        {formatRegistrationFee(featuredTournament.registration_fee)}
+                      </span>
                     </div>
                   </div>
                   
@@ -236,6 +246,12 @@ const TournamentShowcase = () => {
                       <div className="flex items-center justify-between">
                         <span className="text-muted-foreground">Date</span>
                         <span>{formatDate(tournament.date_held)}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-muted-foreground">Registration</span>
+                        <span className={`font-semibold ${tournament.registration_fee === 0 ? 'text-green-600' : 'text-orange-600'}`}>
+                          {formatRegistrationFee(tournament.registration_fee)}
+                        </span>
                       </div>
                     </div>
                     

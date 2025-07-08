@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Trophy, Calendar, Users, MapPin } from 'lucide-react';
+import { Trophy, Calendar, Users, MapPin, CreditCard } from 'lucide-react';
 import { useTournaments } from '@/hooks/useTournaments';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -29,6 +29,10 @@ const Tournaments = () => {
       currency: 'IDR',
       minimumFractionDigits: 0,
     }).format(amount);
+  };
+
+  const formatRegistrationFee = (fee: number) => {
+    return fee === 0 ? 'FREE' : formatCurrency(fee);
   };
 
   const formatDate = (dateString: string) => {
@@ -146,6 +150,12 @@ const Tournaments = () => {
                           <div className="flex items-center gap-2 text-sm">
                             <MapPin className="h-4 w-4 text-muted-foreground" />
                             <span>{tournament.location}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm">
+                            <CreditCard className="h-4 w-4 text-muted-foreground" />
+                            <span className={`font-semibold ${tournament.registration_fee === 0 ? 'text-green-600' : 'text-orange-600'}`}>
+                              {formatRegistrationFee(tournament.registration_fee)}
+                            </span>
                           </div>
                         </div>
                         
