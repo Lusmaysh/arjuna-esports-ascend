@@ -4,13 +4,17 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Trophy, Calendar, Users, MapPin, CreditCard } from 'lucide-react';
+import { Trophy, Calendar, Users, MapPin, CreditCard, RefreshCw } from 'lucide-react';
 import { useTournaments } from '@/hooks/useTournaments';
+import { useTournamentStatusRefresh } from '@/hooks/useTournamentStatusRefresh';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
+import { useToast } from '@/hooks/use-toast';
 
 const Tournaments = () => {
   const { data: tournaments, isLoading, error } = useTournaments();
+  const refreshMutation = useTournamentStatusRefresh();
+  const { toast } = useToast();
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
@@ -37,6 +41,24 @@ const Tournaments = () => {
 
   const formatDate = (dateString: string) => {
     return format(new Date(dateString), 'dd MMMM yyyy', { locale: id });
+  };
+
+  const handleRefreshStatuses = () => {
+    refreshMutation.mutate(undefined, {
+      onSuccess: () => {
+        toast({
+          title: "Status Updated",
+          description: "Tournament statuses have been refreshed successfully.",
+        });
+      },
+      onError: () => {
+        toast({
+          title: "Error",
+          description: "Failed to refresh tournament statuses. Please try again.",
+          variant: "destructive",
+        });
+      },
+    });
   };
 
   if (isLoading) {
@@ -87,6 +109,17 @@ const Tournaments = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               Ikuti turnamen esports terbesar dan terbaik. Buktikan skill Anda dan raih hadiah jutaan rupiah!
             </p>
+            
+            {/* Refresh Button */}
+            <Button 
+              onClick={handleRefreshStatuses}
+              disabled={refreshMutation.isPending}
+              variant="outline"
+              className="mb-8"
+            >
+              <RefreshCw className={`h-4 w-4 mr-2 ${refreshMutation.isPending ? 'animate-spin' : ''}`} />
+              {refreshMutation.isPending ? 'Memperbarui Status...' : 'Perbarui Status Turnamen'}
+            </Button>
           </div>
         </section>
 

@@ -172,7 +172,7 @@ const TournamentShowcase = () => {
                     </div>
                   </div>
                   
-                  {featuredTournament.registration_link ? (
+                  {featuredTournament.registration_link && featuredTournament.status === 'registration' ? (
                     <Button 
                       size="lg" 
                       className="w-full bg-primary hover:bg-primary/90 font-orbitron font-bold glow-effect"
@@ -188,7 +188,8 @@ const TournamentShowcase = () => {
                       className="w-full bg-primary hover:bg-primary/90 font-orbitron font-bold glow-effect"
                       disabled
                     >
-                      Coming Soon
+                      {featuredTournament.status === 'completed' ? 'Tournament Ended' :
+                       featuredTournament.status === 'ongoing' ? 'Live Now' : 'Coming Soon'}
                     </Button>
                   )}
                 </div>

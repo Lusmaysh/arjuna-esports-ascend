@@ -18,5 +18,6 @@ export const useTournaments = () => {
       
       return data;
     },
+    refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes to ensure status is up to date
   });
 };
