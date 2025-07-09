@@ -89,7 +89,7 @@ const CookiePolicy = () => {
                 <ul className="list-disc list-inside space-y-2">
                   <li>Email: privacy@arjunaesports.com</li>
                   <li>Telepon: +62 21 1234 5678</li>
-                  <li>Alamat: Jakarta, Indonesia</li>
+                  <li>Alamat: Pekalongan, Indonesia</li>
                 </ul>
               </div>
             </div>
