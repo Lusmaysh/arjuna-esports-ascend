@@ -12,7 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useForm } from 'react-hook-form';
-import { Plus, Edit, Trash2, RefreshCw } from 'lucide-react';
+import { Plus, Edit, Trash2, RefreshCw, Upload, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -50,6 +50,9 @@ interface TournamentForm {
 const Admin = () => {
   const [editingTournament, setEditingTournament] = useState<Tournament | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -81,11 +84,50 @@ const Admin = () => {
     },
   });
 
+  const uploadImageToSupabase = async (file: File): Promise<string> => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('tournament-images')
+      .upload(filePath, file);
+
+    if (uploadError) {
+      throw uploadError;
+    }
+
+    const { data } = supabase.storage
+      .from('tournament-images')
+      .getPublicUrl(filePath);
+
+    return data.publicUrl;
+  };
+
   const createMutation = useMutation({
     mutationFn: async (data: TournamentForm) => {
+      let finalImageUrl = data.image_url;
+      
+      if (imageFile) {
+        setUploadingImage(true);
+        try {
+          finalImageUrl = await uploadImageToSupabase(imageFile);
+        } catch (error) {
+          console.error('Image upload error:', error);
+          throw new Error('Failed to upload image');
+        } finally {
+          setUploadingImage(false);
+        }
+      }
+
+      const finalData = {
+        ...data,
+        image_url: finalImageUrl || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop'
+      };
+
       const { error } = await supabase
         .from('tournaments')
-        .insert([data]);
+        .insert([finalData]);
       
       if (error) throw error;
     },
@@ -97,9 +139,12 @@ const Admin = () => {
         description: "Tournament created successfully.",
       });
       setIsDialogOpen(false);
+      setImageFile(null);
+      setImagePreview(null);
       form.reset();
     },
     onError: (error) => {
+      setUploadingImage(false);
       toast({
         title: "Error",
         description: "Failed to create tournament.",
@@ -110,9 +155,28 @@ const Admin = () => {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: string; data: TournamentForm }) => {
+      let finalImageUrl = data.image_url;
+      
+      if (imageFile) {
+        setUploadingImage(true);
+        try {
+          finalImageUrl = await uploadImageToSupabase(imageFile);
+        } catch (error) {
+          console.error('Image upload error:', error);
+          throw new Error('Failed to upload image');
+        } finally {
+          setUploadingImage(false);
+        }
+      }
+
+      const finalData = {
+        ...data,
+        image_url: finalImageUrl || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop'
+      };
+
       const { error } = await supabase
         .from('tournaments')
-        .update(data)
+        .update(finalData)
         .eq('id', id);
       
       if (error) throw error;
@@ -126,9 +190,12 @@ const Admin = () => {
       });
       setIsDialogOpen(false);
       setEditingTournament(null);
+      setImageFile(null);
+      setImagePreview(null);
       form.reset();
     },
     onError: (error) => {
+      setUploadingImage(false);
       toast({
         title: "Error",
         description: "Failed to update tournament.",
@@ -178,16 +245,30 @@ const Admin = () => {
     },
   });
 
+  const handleImageFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+      // Clear the URL field when a file is selected
+      form.setValue('image_url', '');
+    }
+  };
+
+  const removeImageFile = () => {
+    setImageFile(null);
+    setImagePreview(null);
+  };
+
   const onSubmit = (data: TournamentForm) => {
-    const finalData = {
-      ...data,
-      image_url: data.image_url || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop'
-    };
-    
     if (editingTournament) {
-      updateMutation.mutate({ id: editingTournament.id, data: finalData });
+      updateMutation.mutate({ id: editingTournament.id, data });
     } else {
-      createMutation.mutate(finalData);
+      createMutation.mutate(data);
     }
   };
 
@@ -205,6 +286,8 @@ const Admin = () => {
       registration_link: tournament.registration_link || '',
       image_url: tournament.image_url || '',
     });
+    setImageFile(null);
+    setImagePreview(null);
     setIsDialogOpen(true);
   };
 
@@ -258,6 +341,8 @@ const Admin = () => {
                   <DialogTrigger asChild>
                     <Button onClick={() => {
                       setEditingTournament(null);
+                      setImageFile(null);
+                      setImagePreview(null);
                       form.reset();
                     }}>
                       <Plus className="h-4 w-4 mr-2" />
@@ -308,25 +393,68 @@ const Admin = () => {
                           />
                         </div>
 
-                        <FormField
-                          control={form.control}
-                          name="image_url"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Tournament Image URL (Optional)</FormLabel>
-                              <FormControl>
-                                <Input 
-                                  placeholder="https://example.com/image.jpg (leave blank for default Mobile Legends image)" 
-                                  {...field} 
-                                />
-                              </FormControl>
-                              <FormMessage />
-                              <p className="text-sm text-muted-foreground">
-                                If left empty, a default Mobile Legends image will be used
-                              </p>
-                            </FormItem>
+                        <div className="space-y-4">
+                          <FormLabel>Tournament Image</FormLabel>
+                          
+                          {(imagePreview || form.watch('image_url')) && (
+                            <div className="relative w-full h-48 rounded-lg overflow-hidden border">
+                              <img 
+                                src={imagePreview || form.watch('image_url')} 
+                                alt="Tournament preview" 
+                                className="w-full h-full object-cover"
+                              />
+                              {imagePreview && (
+                                <Button
+                                  type="button"
+                                  variant="destructive"
+                                  size="sm"
+                                  className="absolute top-2 right-2"
+                                  onClick={removeImageFile}
+                                >
+                                  <X className="h-4 w-4" />
+                                </Button>
+                              )}
+                            </div>
                           )}
-                        />
+
+                          <div className="flex items-center gap-4">
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              onChange={handleImageFileChange}
+                              className="flex-1"
+                              disabled={uploadingImage}
+                            />
+                            <span className="text-sm text-muted-foreground">OR</span>
+                          </div>
+
+                          <FormField
+                            control={form.control}
+                            name="image_url"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <Input 
+                                    placeholder="Enter image URL" 
+                                    {...field}
+                                    disabled={!!imageFile || uploadingImage}
+                                    onChange={(e) => {
+                                      field.onChange(e);
+                                      if (e.target.value) {
+                                        setImageFile(null);
+                                        setImagePreview(null);
+                                      }
+                                    }}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                                <p className="text-sm text-muted-foreground">
+                                  {imageFile ? 'File selected for upload' : 'If left empty, a default Mobile Legends image will be used'}
+                                </p>
+                              </FormItem>
+                            )}
+                          />
+                        </div>
 
                         <div className="grid grid-cols-2 gap-4">
                           <FormField
@@ -455,6 +583,8 @@ const Admin = () => {
                             onClick={() => {
                               setIsDialogOpen(false);
                               setEditingTournament(null);
+                              setImageFile(null);
+                              setImagePreview(null);
                               form.reset();
                             }}
                           >
@@ -462,9 +592,9 @@ const Admin = () => {
                           </Button>
                           <Button 
                             type="submit"
-                            disabled={createMutation.isPending || updateMutation.isPending}
+                            disabled={createMutation.isPending || updateMutation.isPending || uploadingImage}
                           >
-                            {editingTournament ? 'Update' : 'Create'} Tournament
+                            {uploadingImage ? 'Uploading...' : editingTournament ? 'Update' : 'Create'} Tournament
                           </Button>
                         </div>
                       </form>
