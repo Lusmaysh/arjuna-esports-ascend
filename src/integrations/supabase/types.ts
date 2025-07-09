@@ -60,6 +60,7 @@ export type Database = {
           description: string | null
           game: string
           id: string
+          image_url: string | null
           location: string
           name: string
           number_of_teams: number
@@ -75,6 +76,7 @@ export type Database = {
           description?: string | null
           game: string
           id?: string
+          image_url?: string | null
           location: string
           name: string
           number_of_teams?: number
@@ -90,6 +92,7 @@ export type Database = {
           description?: string | null
           game?: string
           id?: string
+          image_url?: string | null
           location?: string
           name?: string
           number_of_teams?: number

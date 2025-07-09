@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -30,6 +29,7 @@ interface Tournament {
   status: string;
   description: string | null;
   registration_link: string | null;
+  image_url: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -44,6 +44,7 @@ interface TournamentForm {
   location: string;
   description: string;
   registration_link: string;
+  image_url: string;
 }
 
 const Admin = () => {
@@ -76,6 +77,7 @@ const Admin = () => {
       location: '',
       description: '',
       registration_link: '',
+      image_url: '',
     },
   });
 
@@ -177,10 +179,15 @@ const Admin = () => {
   });
 
   const onSubmit = (data: TournamentForm) => {
+    const finalData = {
+      ...data,
+      image_url: data.image_url || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop'
+    };
+    
     if (editingTournament) {
-      updateMutation.mutate({ id: editingTournament.id, data });
+      updateMutation.mutate({ id: editingTournament.id, data: finalData });
     } else {
-      createMutation.mutate(data);
+      createMutation.mutate(finalData);
     }
   };
 
@@ -196,6 +203,7 @@ const Admin = () => {
       location: tournament.location,
       description: tournament.description || '',
       registration_link: tournament.registration_link || '',
+      image_url: tournament.image_url || '',
     });
     setIsDialogOpen(true);
   };
@@ -299,6 +307,26 @@ const Admin = () => {
                             )}
                           />
                         </div>
+
+                        <FormField
+                          control={form.control}
+                          name="image_url"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Tournament Image URL (Optional)</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  placeholder="https://example.com/image.jpg (leave blank for default Mobile Legends image)" 
+                                  {...field} 
+                                />
+                              </FormControl>
+                              <FormMessage />
+                              <p className="text-sm text-muted-foreground">
+                                If left empty, a default Mobile Legends image will be used
+                              </p>
+                            </FormItem>
+                          )}
+                        />
 
                         <div className="grid grid-cols-2 gap-4">
                           <FormField

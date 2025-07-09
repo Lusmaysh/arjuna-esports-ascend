@@ -28,15 +28,9 @@ const TournamentShowcase = () => {
     return format(new Date(dateString), 'dd MMMM yyyy', { locale: id });
   };
 
-  const getGameImage = (game: string) => {
-    const gameImages: { [key: string]: string } = {
-      'Mobile Legends': 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop',
-      'PUBG Mobile': 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop',
-      'Free Fire': 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop',
-      'Valorant': 'https://images.unsplash.com/photo-1627063439772-1447c4b40e5b?w=800&h=600&fit=crop',
-      'League of Legends': 'https://images.unsplash.com/photo-1563207153-f403bf289096?w=800&h=600&fit=crop',
-    };
-    return gameImages[game] || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop';
+  const getTournamentImage = (tournament: any) => {
+    // Use the stored image_url if available, otherwise fall back to default
+    return tournament.image_url || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop';
   };
 
   const getFilteredTournaments = () => {
@@ -150,7 +144,7 @@ const TournamentShowcase = () => {
                   <div className="grid md:grid-cols-2 gap-0">
                     <div className="relative overflow-hidden">
                       <img 
-                        src={getGameImage(featuredTournament.game)}
+                        src={getTournamentImage(featuredTournament)}
                         alt={featuredTournament.name}
                         className="w-full h-80 md:h-full object-cover transition-transform duration-700 hover:scale-110"
                       />
@@ -220,7 +214,7 @@ const TournamentShowcase = () => {
                     <CardContent className="p-0">
                       <div className="relative overflow-hidden">
                         <img 
-                          src={getGameImage(tournament.game)}
+                          src={getTournamentImage(tournament)}
                           alt={tournament.name}
                           className="w-full h-48 object-cover transition-transform duration-700 hover:scale-110"
                         />
