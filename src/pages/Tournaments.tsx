@@ -141,7 +141,7 @@ const Tournaments = () => {
             </p>
             
             {/* Refresh Button */}
-            <Button 
+            {/*<Button 
               onClick={handleRefreshStatuses}
               disabled={refreshMutation.isPending}
               variant="outline"
@@ -149,7 +149,7 @@ const Tournaments = () => {
             >
               <RefreshCw className={`h-4 w-4 mr-2 ${refreshMutation.isPending ? 'animate-spin' : ''}`} />
               {refreshMutation.isPending ? 'Memperbarui Status...' : 'Perbarui Status Turnamen'}
-            </Button>
+            </Button>*/}
           </div>
         </section>
 
