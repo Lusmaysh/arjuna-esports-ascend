@@ -167,6 +167,13 @@ const Footer = () => {
             >
               Cookie Policy
             </Link>
+            <Link 
+              to="/admin" 
+              onClick={handleSupportLinkClick}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              
+            </Link>
           </div>
         </div>
       </div>
