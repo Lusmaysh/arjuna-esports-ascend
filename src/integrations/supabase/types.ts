@@ -58,6 +58,7 @@ export type Database = {
           created_at: string
           date_held: string
           description: string | null
+          diamond_prize_pool: number
           game: string
           id: string
           image_url: string | null
@@ -74,6 +75,7 @@ export type Database = {
           created_at?: string
           date_held: string
           description?: string | null
+          diamond_prize_pool?: number
           game: string
           id?: string
           image_url?: string | null
@@ -90,6 +92,7 @@ export type Database = {
           created_at?: string
           date_held?: string
           description?: string | null
+          diamond_prize_pool?: number
           game?: string
           id?: string
           image_url?: string | null

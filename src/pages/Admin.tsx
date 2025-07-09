@@ -23,6 +23,7 @@ interface Tournament {
   game: string;
   number_of_teams: number;
   prize_pool: number;
+  diamond_prize_pool: number;
   registration_fee: number;
   date_held: string;
   location: string;
@@ -39,6 +40,7 @@ interface TournamentForm {
   game: string;
   number_of_teams: number;
   prize_pool: number;
+  diamond_prize_pool: number;
   registration_fee: number;
   date_held: string;
   location: string;
@@ -75,6 +77,7 @@ const Admin = () => {
       game: '',
       number_of_teams: 8,
       prize_pool: 0,
+      diamond_prize_pool: 0,
       registration_fee: 0,
       date_held: '',
       location: '',
@@ -279,6 +282,7 @@ const Admin = () => {
       game: tournament.game,
       number_of_teams: tournament.number_of_teams,
       prize_pool: tournament.prize_pool,
+      diamond_prize_pool: tournament.diamond_prize_pool,
       registration_fee: tournament.registration_fee,
       date_held: tournament.date_held,
       location: tournament.location,
@@ -314,6 +318,10 @@ const Admin = () => {
       currency: 'IDR',
       minimumFractionDigits: 0,
     }).format(amount);
+  };
+
+  const formatDiamonds = (amount: number) => {
+    return `${amount.toLocaleString()} 💎`;
   };
 
   return (
@@ -512,13 +520,14 @@ const Admin = () => {
                           
                           <FormField
                             control={form.control}
-                            name="registration_fee"
+                            name="diamond_prize_pool"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Registration Fee (IDR)</FormLabel>
+                                <FormLabel>Diamond Prize Pool</FormLabel>
                                 <FormControl>
                                   <Input 
                                     type="number" 
+                                    placeholder="Enter diamond amount"
                                     {...field} 
                                     onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
                                   />
@@ -528,6 +537,24 @@ const Admin = () => {
                             )}
                           />
                         </div>
+
+                        <FormField
+                          control={form.control}
+                          name="registration_fee"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Registration Fee (IDR)</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  type="number" 
+                                  {...field} 
+                                  onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
 
                         <FormField
                           control={form.control}
@@ -625,7 +652,8 @@ const Admin = () => {
                           <TableHead>Game</TableHead>
                           <TableHead>Date</TableHead>
                           <TableHead>Teams</TableHead>
-                          <TableHead>Prize Pool</TableHead>
+                          <TableHead>Money Prize</TableHead>
+                          <TableHead>Diamond Prize</TableHead>
                           <TableHead>Status</TableHead>
                           <TableHead>Actions</TableHead>
                         </TableRow>
@@ -642,6 +670,7 @@ const Admin = () => {
                               </TableCell>
                               <TableCell>{tournament.number_of_teams}</TableCell>
                               <TableCell>{formatCurrency(tournament.prize_pool)}</TableCell>
+                              <TableCell>{formatDiamonds(tournament.diamond_prize_pool)}</TableCell>
                               <TableCell>
                                 <Badge variant={statusBadge.variant}>
                                   {statusBadge.label}
