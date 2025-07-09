@@ -143,7 +143,14 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-border/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-center md:text-left">
-            © 2024 Arjuna Esports. All rights reserved.
+            <Link 
+              to="/admin" 
+              onClick={handleSupportLinkClick}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              ©
+            </Link>
+             2024 Arjuna Esports. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <Link 
@@ -166,13 +173,6 @@ const Footer = () => {
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Cookie Policy
-            </Link>
-            <Link 
-              to="/admin" 
-              onClick={handleSupportLinkClick}
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              
             </Link>
           </div>
         </div>
