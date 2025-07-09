@@ -1,10 +1,9 @@
-
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Trophy, Calendar, Users, MapPin, CreditCard, RefreshCw } from 'lucide-react';
+import { Trophy, Calendar, Users, MapPin, CreditCard, RefreshCw, Gem } from 'lucide-react';
 import { useTournaments } from '@/hooks/useTournaments';
 import { useTournamentStatusRefresh } from '@/hooks/useTournamentStatusRefresh';
 import { format } from 'date-fns';
@@ -34,6 +33,10 @@ const Tournaments = () => {
       currency: 'IDR',
       minimumFractionDigits: 0,
     }).format(amount);
+  };
+
+  const formatDiamonds = (amount: number) => {
+    return new Intl.NumberFormat('id-ID').format(amount);
   };
 
   const formatRegistrationFee = (fee: number) => {
@@ -203,6 +206,14 @@ const Tournaments = () => {
                               {formatCurrency(tournament.prize_pool)}
                             </span>
                           </div>
+                          {tournament.diamond_prize_pool > 0 && (
+                            <div className="flex items-center gap-2 text-sm">
+                              <Gem className="h-4 w-4 text-blue-500" />
+                              <span className="font-semibold text-blue-500">
+                                {formatDiamonds(tournament.diamond_prize_pool)} 💎
+                              </span>
+                            </div>
+                          )}
                           <div className="flex items-center gap-2 text-sm">
                             <Users className="h-4 w-4 text-muted-foreground" />
                             <span>{tournament.number_of_teams} Tim</span>

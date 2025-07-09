@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -7,7 +6,7 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, Users, MapPin, Trophy, CreditCard, ExternalLink, ArrowLeft } from 'lucide-react';
+import { Calendar, Users, MapPin, Trophy, CreditCard, ExternalLink, ArrowLeft, Gem } from 'lucide-react';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { Link } from 'react-router-dom';
@@ -68,6 +67,14 @@ const TournamentDetail = () => {
     return gameImages[game] || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop';
   };
 
+  const formatDiamonds = (amount: number) => {
+    return new Intl.NumberFormat('id-ID').format(amount);
+  };
+
+  const getTournamentImage = (tournament: any) => {
+    return tournament?.image_url || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop';
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background text-foreground">
@@ -125,7 +132,7 @@ const TournamentDetail = () => {
             <div className="grid lg:grid-cols-2 gap-8 mb-12">
               <div className="relative overflow-hidden rounded-xl">
                 <img 
-                  src={getGameImage(tournament.game)}
+                  src={getTournamentImage(tournament)}
                   alt={tournament.name}
                   className="w-full h-80 lg:h-96 object-cover"
                 />
@@ -179,12 +186,12 @@ const TournamentDetail = () => {
             </div>
 
             {/* Tournament Details */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className={`grid md:grid-cols-2 ${tournament.diamond_prize_pool > 0 ? 'lg:grid-cols-5' : 'lg:grid-cols-4'} gap-6 mb-12`}>
               <Card className="bg-card/50 border-border/50">
                 <CardHeader className="pb-3">
                   <div className="flex items-center gap-2">
                     <Trophy className="h-5 w-5 text-primary" />
-                    <CardTitle className="text-sm font-medium">Hadiah</CardTitle>
+                    <CardTitle className="text-sm font-medium">Hadiah Uang</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -193,6 +200,22 @@ const TournamentDetail = () => {
                   </p>
                 </CardContent>
               </Card>
+
+              {tournament.diamond_prize_pool > 0 && (
+                <Card className="bg-card/50 border-border/50">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center gap-2">
+                      <Gem className="h-5 w-5 text-blue-500" />
+                      <CardTitle className="text-sm font-medium">Hadiah Diamond</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-2xl font-bold text-blue-500">
+                      {formatDiamonds(tournament.diamond_prize_pool)} 💎
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
 
               <Card className="bg-card/50 border-border/50">
                 <CardHeader className="pb-3">

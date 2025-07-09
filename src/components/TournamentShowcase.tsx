@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Trophy, Users, DollarSign, Calendar, CreditCard } from 'lucide-react';
+import { Trophy, Users, DollarSign, Calendar, CreditCard, Gem } from 'lucide-react';
 import { useTournaments } from '@/hooks/useTournaments';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -26,6 +26,10 @@ const TournamentShowcase = () => {
 
   const formatDate = (dateString: string) => {
     return format(new Date(dateString), 'dd MMMM yyyy', { locale: id });
+  };
+
+  const formatDiamonds = (amount: number) => {
+    return new Intl.NumberFormat('id-ID').format(amount);
   };
 
   const getTournamentImage = (tournament: any) => {
@@ -172,6 +176,12 @@ const TournamentShowcase = () => {
                           <DollarSign className="h-5 w-5 text-primary" />
                           <span className="text-lg font-bold">{formatCurrency(featuredTournament.prize_pool)}</span>
                         </div>
+                        {featuredTournament.diamond_prize_pool > 0 && (
+                          <div className="flex items-center gap-2">
+                            <Gem className="h-5 w-5 text-blue-500" />
+                            <span className="text-lg font-bold text-blue-500">{formatDiamonds(featuredTournament.diamond_prize_pool)} 💎</span>
+                          </div>
+                        )}
                         <div className="flex items-center gap-2">
                           <Users className="h-5 w-5 text-accent" />
                           <span>{featuredTournament.number_of_teams} Teams</span>
@@ -244,6 +254,12 @@ const TournamentShowcase = () => {
                             <span className="text-muted-foreground">Prize Pool</span>
                             <span className="font-bold text-primary">{formatCurrency(tournament.prize_pool)}</span>
                           </div>
+                          {tournament.diamond_prize_pool > 0 && (
+                            <div className="flex items-center justify-between">
+                              <span className="text-muted-foreground">Diamond Prize</span>
+                              <span className="font-bold text-blue-500">{formatDiamonds(tournament.diamond_prize_pool)} 💎</span>
+                            </div>
+                          )}
                           <div className="flex items-center justify-between">
                             <span className="text-muted-foreground">Teams</span>
                             <span>{tournament.number_of_teams}</span>
