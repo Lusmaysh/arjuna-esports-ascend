@@ -146,9 +146,13 @@ const Footer = () => {
             © 2024 Arjuna Esports. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link 
+              to="/terms-of-service" 
+              onClick={handleSupportLinkClick}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Terms of Service
-            </a>
+            </Link>
             <Link 
               to="/privacy-policy" 
               onClick={handleSupportLinkClick}
@@ -156,9 +160,13 @@ const Footer = () => {
             >
               Privacy Policy
             </Link>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link 
+              to="/cookie-policy" 
+              onClick={handleSupportLinkClick}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
