@@ -10,6 +10,7 @@ import { useTournamentStatusRefresh } from '@/hooks/useTournamentStatusRefresh';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { useToast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
 
 const Tournaments = () => {
   const { data: tournaments, isLoading, error } = useTournaments();
@@ -60,6 +61,32 @@ const Tournaments = () => {
       },
     });
   };
+
+  // Sort tournaments by status priority and date
+  const getSortedTournaments = () => {
+    if (!tournaments) return [];
+    
+    const statusPriority = {
+      registration: 1,
+      upcoming: 2,
+      ongoing: 3,
+      completed: 4
+    };
+
+    return [...tournaments].sort((a, b) => {
+      const priorityA = statusPriority[a.status as keyof typeof statusPriority] || 5;
+      const priorityB = statusPriority[b.status as keyof typeof statusPriority] || 5;
+      
+      if (priorityA !== priorityB) {
+        return priorityA - priorityB;
+      }
+      
+      // If same priority, sort by date
+      return new Date(a.date_held).getTime() - new Date(b.date_held).getTime();
+    });
+  };
+
+  const sortedTournaments = getSortedTournaments();
 
   if (isLoading) {
     return (
@@ -126,9 +153,9 @@ const Tournaments = () => {
         {/* Tournaments Grid */}
         <section className="py-20 px-6 bg-muted/5">
           <div className="max-w-7xl mx-auto">
-            {tournaments && tournaments.length > 0 ? (
+            {sortedTournaments && sortedTournaments.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {tournaments.map((tournament) => {
+                {sortedTournaments.map((tournament) => {
                   const statusBadge = getStatusBadge(tournament.status);
                   const getButtonText = () => {
                     switch (tournament.status) {
@@ -192,13 +219,24 @@ const Tournaments = () => {
                           </div>
                         </div>
                         
-                        <Button 
-                          className="w-full" 
-                          variant="outline"
-                          onClick={handleButtonClick}
-                        >
-                          {getButtonText()}
-                        </Button>
+                        <div className="flex gap-2">
+                          <Link to={`/tournament/${tournament.id}`} className="flex-1">
+                            <Button 
+                              className="w-full" 
+                              variant="outline"
+                            >
+                              Info Lengkap
+                            </Button>
+                          </Link>
+                          {tournament.status === 'registration' && tournament.registration_link && (
+                            <Button 
+                              onClick={handleButtonClick}
+                              className="flex-1"
+                            >
+                              {getButtonText()}
+                            </Button>
+                          )}
+                        </div>
                       </CardContent>
                     </Card>
                   );
