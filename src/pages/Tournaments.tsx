@@ -200,12 +200,14 @@ const Tournaments = () => {
                             <Calendar className="h-4 w-4 text-muted-foreground" />
                             <span>{formatDate(tournament.date_held)}</span>
                           </div>
+                          {tournament.prize_pool > 0 && (
                           <div className="flex items-center gap-2 text-sm">
                             <Trophy className="h-4 w-4 text-muted-foreground" />
                             <span className="font-semibold text-primary">
                               {formatCurrency(tournament.prize_pool)}
                             </span>
                           </div>
+                      )}
                           {tournament.diamond_prize_pool > 0 && (
                             <div className="flex items-center gap-2 text-sm">
                               <Gem className="h-4 w-4 text-blue-500" />
