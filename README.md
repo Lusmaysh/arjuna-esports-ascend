@@ -1,73 +1,63 @@
-# Welcome to your Lovable project
+# Arjuna Esports Ascend
 
-## Project info
+Website resmi untuk tim **Arjuna Esports Ascend**, dirancang sebagai platform promosi digital yang modern, responsif, dan informatif. Proyek ini dibuat menggunakan **React**, **TypeScript**, dan **Tailwind CSS**, dengan backend sederhana melalui **Supabase**, serta dideploy menggunakan **Vercel**.
 
-**URL**: https://lovable.dev/projects/e4f71112-47a6-44b0-bc46-772ec2e60f68
+## 🔥 Fitur Utama
 
-## How can I edit this code?
+- 🌐 Landing page profesional dan mobile-friendly
+- 📌 Informasi tim esports dan event yang sedang atau akan berlangsung
+- 🎮 Tampilan modern dengan animasi ringan dan struktur navigasi yang intuitif
+- 🔐 Integrasi backend menggunakan Supabase (autentikasi & data ringan)
+- ⚡ Hosting cepat & stabil menggunakan Vercel
 
-There are several ways of editing your application.
+## 🛠️ Teknologi yang Digunakan
 
-**Use Lovable**
+- **React** – Library front-end modern berbasis komponen
+- **TypeScript** – Menambahkan tipe statis dan skalabilitas
+- **Tailwind CSS** – Utility-first CSS untuk styling yang efisien
+- **Supabase** – Backend as a Service (BaaS) untuk autentikasi dan database
+- **Vercel** – Hosting/deploy otomatis dari GitHub
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e4f71112-47a6-44b0-bc46-772ec2e60f68) and start prompting.
+## 🚀 Cara Menjalankan Proyek
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Clone repositori:
+   ```bash
+   git clone https://github.com/Lusmaysh/arjuna-esports-ascend.git
+   ```
+2. Masuk ke direktori proyek:
+   ```bash
+   cd arjuna-esports-ascend
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Jalankan proyek:
+   ```bash
+   npm run dev
+   ```
 
-**Use your preferred IDE**
+> ⚠️ Untuk koneksi Supabase, kamu perlu membuat `.env` file dengan konfigurasi API key kamu.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📦 Struktur Folder (Opsional)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/
+├── pages/
+├── assets/
+├── hooks/
+└── utils/
 ```
 
-**Edit a file directly in GitHub**
+## 📸 Tampilan (Screenshots)
+> (Tambahkan screenshot tampilan UI jika ada)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🧑‍💻 Kontributor
 
-**Use GitHub Codespaces**
+- **Syamsul Hidayat** – Fullstack Developer  
+  GitHub: [@Lusmaysh](https://github.com/Lusmaysh)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📄 Lisensi
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/e4f71112-47a6-44b0-bc46-772ec2e60f68) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Proyek ini bersifat open-source dan menggunakan lisensi [MIT](LICENSE).
