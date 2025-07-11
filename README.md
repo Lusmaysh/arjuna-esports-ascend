@@ -39,7 +39,7 @@ Website resmi untuk tim **Arjuna Esports Ascend**, dirancang sebagai platform pr
 
 > ⚠️ Untuk koneksi Supabase, kamu perlu membuat `.env` file dengan konfigurasi API key kamu.
 
-## 📦 Struktur Folder (Opsional)
+## 📦 Struktur Folder
 
 ```
 src/
@@ -51,7 +51,7 @@ src/
 ```
 
 ## 📸 Tampilan (Screenshots)
-> (Tambahkan screenshot tampilan UI jika ada)
+  <!-- > (Tambahkan screenshot tampilan UI jika ada) -->
 
 ## 🧑‍💻 Kontributor
 
