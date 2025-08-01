@@ -19,7 +19,7 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: 'Dashboard', href: '/', icon: LayoutDashboard },
+    // { name: 'Dashboard', href: '/', icon: LayoutDashboard },
     { name: 'Tournaments', href: '/tournaments', icon: Trophy },
     // { name: 'Schedule', href: '/schedule', icon: Calendar },
     // { name: 'Community', href: '/community', icon: Users },
