@@ -10,6 +10,7 @@ import { Calendar, Users, MapPin, Trophy, CreditCard, ExternalLink, ArrowLeft, G
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const TournamentDetail = () => {
   const { id: tournamentId } = useParams();
@@ -28,6 +29,11 @@ const TournamentDetail = () => {
     },
     enabled: !!tournamentId,
   });
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {

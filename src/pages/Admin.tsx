@@ -246,6 +246,14 @@ const Admin = () => {
         description: "Tournament statuses refreshed successfully.",
       });
     },
+    onError: (error) => {
+      console.error('Error refreshing tournament statuses:', error);
+      toast({
+        title: "Error",
+        description: "Failed to refresh tournament statuses. Please try again.",
+        variant: "destructive",
+      });
+    },
   });
 
   const handleImageFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
