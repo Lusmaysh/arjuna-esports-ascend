@@ -171,17 +171,19 @@ const TournamentShowcase = () => {
                         {featuredTournament.name}
                       </h3>
                       
-                      <div className="grid grid-cols-2 gap-4 mb-8">
-                        <div className="flex items-center gap-2">
-                          <DollarSign className="h-5 w-5 text-primary" />
-                          <span className="text-lg font-bold">{formatCurrency(featuredTournament.prize_pool)}</span>
-                        </div>
-                        {featuredTournament.diamond_prize_pool > 0 && (
-                          <div className="flex items-center gap-2">
-                            <Gem className="h-5 w-5 text-blue-500" />
-                            <span className="text-lg font-bold text-blue-500">{formatDiamonds(featuredTournament.diamond_prize_pool)} 💎</span>
-                          </div>
-                        )}
+                        <div className="grid grid-cols-2 gap-4 mb-8">
+                         {featuredTournament.prize_pool > 0 && (
+                           <div className="flex items-center gap-2">
+                             <DollarSign className="h-5 w-5 text-primary" />
+                             <span className="text-lg font-bold">{formatCurrency(featuredTournament.prize_pool)}</span>
+                           </div>
+                         )}
+                         {featuredTournament.diamond_prize_pool > 0 && (
+                           <div className="flex items-center gap-2">
+                             <Gem className="h-5 w-5 text-blue-500" />
+                             <span className="text-lg font-bold text-blue-500">{formatDiamonds(featuredTournament.diamond_prize_pool)} 💎</span>
+                           </div>
+                         )}
                         <div className="flex items-center gap-2">
                           <Users className="h-5 w-5 text-accent" />
                           <span>{featuredTournament.number_of_teams} Teams</span>
@@ -249,17 +251,19 @@ const TournamentShowcase = () => {
                           {tournament.name}
                         </h3>
                         
-                        <div className="space-y-2 mb-6 text-sm">
-                          <div className="flex items-center justify-between">
-                            <span className="text-muted-foreground">Prize Pool</span>
-                            <span className="font-bold text-primary">{formatCurrency(tournament.prize_pool)}</span>
-                          </div>
-                          {tournament.diamond_prize_pool > 0 && (
-                            <div className="flex items-center justify-between">
-                              <span className="text-muted-foreground">Diamond Prize</span>
-                              <span className="font-bold text-blue-500">{formatDiamonds(tournament.diamond_prize_pool)} 💎</span>
-                            </div>
-                          )}
+                         <div className="space-y-2 mb-6 text-sm">
+                           {tournament.prize_pool > 0 && (
+                             <div className="flex items-center justify-between">
+                               <span className="text-muted-foreground">Prize Pool</span>
+                               <span className="font-bold text-primary">{formatCurrency(tournament.prize_pool)}</span>
+                             </div>
+                           )}
+                           {tournament.diamond_prize_pool > 0 && (
+                             <div className="flex items-center justify-between">
+                               <span className="text-muted-foreground">Diamond Prize</span>
+                               <span className="font-bold text-blue-500">{formatDiamonds(tournament.diamond_prize_pool)} 💎</span>
+                             </div>
+                           )}
                           <div className="flex items-center justify-between">
                             <span className="text-muted-foreground">Teams</span>
                             <span>{tournament.number_of_teams}</span>
