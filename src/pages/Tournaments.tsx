@@ -7,11 +7,21 @@ import { useTournamentStatusRefresh } from '@/hooks/useTournamentStatusRefresh';
 import { useToast } from '@/hooks/use-toast';
 import TournamentCard from '@/components/TournamentCard';
 import MobileLegendsInfo from '@/components/MobileLegendsInfo';
+import { useResourcePreloader, useRoutePrefetch } from '@/hooks/useResourcePreloader';
 
 const Tournaments = () => {
   const { data: tournaments, isLoading, error } = useTournaments();
   const refreshMutation = useTournamentStatusRefresh();
   const { toast } = useToast();
+
+  // Preload tournament images and prefetch related routes
+  useResourcePreloader([
+    { href: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop', as: 'image' },
+    { href: 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap', as: 'style' }
+  ]);
+
+  // Prefetch likely next routes
+  useRoutePrefetch(['Dashboard', 'Community', 'TournamentDetail']);
 
 
   const handleRefreshStatuses = () => {

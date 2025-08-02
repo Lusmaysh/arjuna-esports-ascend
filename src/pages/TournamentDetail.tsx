@@ -11,6 +11,8 @@ import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useResourcePreloader, useRoutePrefetch } from '@/hooks/useResourcePreloader';
+import { OptimizedImage } from '@/components/OptimizedImage';
 
 const TournamentDetail = () => {
   const { id: tournamentId } = useParams();
@@ -29,6 +31,14 @@ const TournamentDetail = () => {
     },
     enabled: !!tournamentId,
   });
+
+  // Prefetch related resources and routes after data is loaded
+  useResourcePreloader([
+    { href: tournament?.image_url || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop', as: 'image' },
+  ]);
+
+  // Prefetch likely next routes user might visit
+  useRoutePrefetch(['Tournaments', 'Community', 'Dashboard']);
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -137,10 +147,12 @@ const TournamentDetail = () => {
 
             <div className="grid lg:grid-cols-2 gap-8 mb-12">
               <div className="relative overflow-hidden rounded-xl">
-                <img 
+                <OptimizedImage 
                   src={getTournamentImage(tournament)}
                   alt={tournament.name}
                   className="w-full h-80 lg:h-96 object-cover"
+                  priority={true}
+                  webpSupport={true}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                 <div className="absolute top-4 left-4">
