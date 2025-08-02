@@ -15,10 +15,31 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@arjuna_esports" />
 
+    <!-- Cache Control Headers -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
+    
+    <!-- DNS Prefetch for external domains -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//ftwykhmauasmxpygshnf.supabase.co">
+    
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/src/index.css" as="style">
+    
+    <!-- Service Worker for caching -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
   </head>
 
   <body>

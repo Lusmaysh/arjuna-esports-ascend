@@ -23,8 +23,24 @@ import CookiePolicy from "./pages/CookiePolicy";
 import TermsOfService from "./pages/TermsOfService";
 import TournamentDetail from "./pages/TournamentDetail";
 import { Helmet } from "react-helmet";
+import { useResourcePreloader } from "@/hooks/useResourcePreloader";
 
-const queryClient = new QueryClient();
+// Enhanced QueryClient with better caching
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
+      retry: 3,
+      retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: true,
+    },
+    mutations: {
+      retry: 1,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

@@ -19,4 +19,25 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast'],
+          supabase: ['@supabase/supabase-js'],
+          query: ['@tanstack/react-query'],
+        },
+      },
+    },
+    // Enable compression
+    minify: 'esbuild',
+    target: 'esnext',
+    // Asset optimization
+    assetsInlineLimit: 4096,
+  },
+  // Performance optimizations
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', '@supabase/supabase-js', '@tanstack/react-query'],
+  },
 }));

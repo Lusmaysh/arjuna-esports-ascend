@@ -5,6 +5,7 @@ import { Trophy, Calendar, Users, MapPin, CreditCard, Gem } from 'lucide-react';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { Link } from 'react-router-dom';
+import { OptimizedImage } from '@/components/OptimizedImage';
 
 interface Tournament {
   id: string;
