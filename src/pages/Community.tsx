@@ -6,8 +6,35 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Users, MessageCircle, Trophy, Star } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 const Community = () => {
+  const [dbTest, setDbTest] = useState<string>('Testing...');
+
+  useEffect(() => {
+    const testConnection = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('tournaments')
+          .select('count(*)')
+          .single();
+        
+        if (error) {
+          console.error('Database connection error:', error);
+          setDbTest(`Error: ${error.message}`);
+        } else {
+          setDbTest('Database connected successfully');
+        }
+      } catch (err) {
+        console.error('Unexpected error:', err);
+        setDbTest(`Unexpected error: ${err}`);
+      }
+    };
+
+    testConnection();
+  }, []);
+
   const communityStats = [
     { label: 'Active Players', value: '25,000+', icon: Users },
     { label: 'Tournaments Held', value: '150+', icon: Trophy },
@@ -80,6 +107,9 @@ const Community = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               Bergabunglah dengan komunitas esports terbesar Indonesia. Connect, compete, dan conquer bersama!
             </p>
+            <div className="bg-muted/20 p-4 rounded-lg max-w-md mx-auto">
+              <p className="text-sm text-muted-foreground">Database Status: {dbTest}</p>
+            </div>
           </div>
         </section>
 
