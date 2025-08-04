@@ -17,8 +17,7 @@ const Community = () => {
       try {
         const { data, error } = await supabase
           .from('tournaments')
-          .select('count(*)')
-          .single();
+          .select('*', { count: 'exact', head: true });
         
         if (error) {
           console.error('Database connection error:', error);
