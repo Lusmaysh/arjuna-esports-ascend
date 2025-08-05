@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Trophy, Calendar, Users, DollarSign, LayoutDashboard, Newspaper, ShoppingCart } from 'lucide-react';
+import { Menu, X, Trophy, Calendar, Users, DollarSign, LayoutDashboard, Newspaper, ShoppingCart, MessageCircle, Camera } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -19,11 +19,11 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    // { name: 'Dashboard', href: '/', icon: LayoutDashboard },
     { name: 'Tournaments', href: '/tournaments', icon: Trophy },
-    // { name: 'Schedule', href: '/schedule', icon: Calendar },
-    // { name: 'Community', href: '/community', icon: Users },
-    // { name: 'News & Updates', href: '/news-updates', icon: Newspaper },
+    { name: 'Community', href: '/community', icon: Users },
+    { name: 'Forum', href: '/forum', icon: MessageCircle },
+    { name: 'Gallery', href: '/gallery', icon: Camera },
+    { name: 'Schedule', href: '/schedule', icon: Calendar },
   ];
 
   const handleScrollToTop = () => {

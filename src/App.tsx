@@ -8,6 +8,8 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import Dashboard from "./pages/Dashboard";
 import Tournaments from "./pages/Tournaments";
 import Community from "./pages/Community";
+import Forum from "./pages/Forum";
+import Gallery from "./pages/Gallery";
 import TournamentServices from "./pages/TournamentServices";
 import NotFound from "./pages/NotFound";
 import TournamentRules from "./pages/TournamentRules";
@@ -69,6 +71,8 @@ const App = () => (
             <Route path="/tournaments" element={<Tournaments />} />
             <Route path="/tournament/:id" element={<TournamentDetail />} />
             <Route path="/community" element={<Community />} />
+            <Route path="/forum" element={<Forum />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/tournament-services" element={<TournamentServices />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/rankings" element={<Rankings />} />

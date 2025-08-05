@@ -41,32 +41,29 @@ const Community = () => {
     { label: 'Champions', value: '500+', icon: Star }
   ];
 
-  const topPlayers = [
-    {
-      id: 1,
-      name: 'ProGamer123',
-      game: 'Valorant',
-      rank: '#1',
-      avatar: '/placeholder.svg',
-      points: '2,450'
-    },
-    {
-      id: 2,
-      name: 'MLMaster',
-      game: 'Mobile Legends',
-      rank: '#2',
-      avatar: '/placeholder.svg',
-      points: '2,380'
-    },
-    {
-      id: 3,
-      name: 'PUBGKing',
-      game: 'PUBG Mobile',
-      rank: '#3',
-      avatar: '/placeholder.svg',
-      points: '2,290'
-    }
-  ];
+  const [leaderboard, setLeaderboard] = useState<any[]>([]);
+  const [loadingLeaderboard, setLoadingLeaderboard] = useState(true);
+
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('players_leaderboard')
+          .select('*')
+          .order('total_points', { ascending: false })
+          .limit(10);
+
+        if (error) throw error;
+        setLeaderboard(data || []);
+      } catch (error) {
+        console.error('Error fetching leaderboard:', error);
+      } finally {
+        setLoadingLeaderboard(false);
+      }
+    };
+
+    fetchLeaderboard();
+  }, []);
 
   const recentActivities = [
     {
@@ -148,27 +145,38 @@ const Community = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {topPlayers.map((player) => (
-                      <div key={player.id} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <Badge variant="secondary" className="min-w-12">
-                            {player.rank}
-                          </Badge>
-                          <Avatar className="h-10 w-10">
-                            <AvatarImage src={player.avatar} />
-                            <AvatarFallback>{player.name.substring(0, 2)}</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <p className="font-semibold">{player.name}</p>
-                            <p className="text-sm text-muted-foreground">{player.game}</p>
+                    {loadingLeaderboard ? (
+                      <div className="text-center py-4">
+                        <p className="text-muted-foreground">Loading leaderboard...</p>
+                      </div>
+                    ) : leaderboard.length === 0 ? (
+                      <div className="text-center py-4">
+                        <p className="text-muted-foreground">No players in leaderboard yet</p>
+                      </div>
+                    ) : (
+                      leaderboard.map((player, index) => (
+                        <div key={player.id} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                          <div className="flex items-center gap-3">
+                            <Badge variant="secondary" className="min-w-12">
+                              #{index + 1}
+                            </Badge>
+                            <Avatar className="h-10 w-10">
+                              <AvatarImage src={player.avatar_url} />
+                              <AvatarFallback>{player.player_name.substring(0, 2)}</AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <p className="font-semibold">{player.player_name}</p>
+                              <p className="text-sm text-muted-foreground">{player.game}</p>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <p className="font-semibold text-primary">{player.total_points}</p>
+                            <p className="text-xs text-muted-foreground">points</p>
+                            <p className="text-xs text-muted-foreground">{player.tournaments_won} wins</p>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <p className="font-semibold text-primary">{player.points}</p>
-                          <p className="text-xs text-muted-foreground">points</p>
-                        </div>
-                      </div>
-                    ))}
+                      ))
+                    )}
                   </div>
                 </CardContent>
               </Card>
