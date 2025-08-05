@@ -14,6 +14,122 @@ export type Database = {
   }
   public: {
     Tables: {
+      forum_posts: {
+        Row: {
+          author_email: string | null
+          author_name: string
+          category: string
+          content: string
+          created_at: string
+          id: string
+          likes_count: number
+          replies_count: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_email?: string | null
+          author_name: string
+          category?: string
+          content: string
+          created_at?: string
+          id?: string
+          likes_count?: number
+          replies_count?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_email?: string | null
+          author_name?: string
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          likes_count?: number
+          replies_count?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      forum_replies: {
+        Row: {
+          author_email: string | null
+          author_name: string
+          content: string
+          created_at: string
+          id: string
+          post_id: string
+          updated_at: string
+        }
+        Insert: {
+          author_email?: string | null
+          author_name: string
+          content: string
+          created_at?: string
+          id?: string
+          post_id: string
+          updated_at?: string
+        }
+        Update: {
+          author_email?: string | null
+          author_name?: string
+          content?: string
+          created_at?: string
+          id?: string
+          post_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "forum_replies_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "forum_posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      players_leaderboard: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          game: string
+          id: string
+          player_email: string | null
+          player_name: string
+          total_points: number
+          tournaments_played: number
+          tournaments_won: number
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          game: string
+          id?: string
+          player_email?: string | null
+          player_name: string
+          total_points?: number
+          tournaments_played?: number
+          tournaments_won?: number
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          game?: string
+          id?: string
+          player_email?: string | null
+          player_name?: string
+          total_points?: number
+          tournaments_played?: number
+          tournaments_won?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       service_orders: {
         Row: {
           created_at: string
@@ -52,6 +168,47 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      tournament_gallery: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string
+          title: string
+          tournament_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url: string
+          title: string
+          tournament_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string
+          title?: string
+          tournament_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tournament_gallery_tournament_id_fkey"
+            columns: ["tournament_id"]
+            isOneToOne: false
+            referencedRelation: "tournaments"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       tournaments: {
         Row: {
