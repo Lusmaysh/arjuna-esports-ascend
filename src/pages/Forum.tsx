@@ -42,6 +42,7 @@ const Forum = () => {
   const [showNewPostForm, setShowNewPostForm] = useState(false);
   const [newPost, setNewPost] = useState({ title: '', content: '', category: 'general', author_name: '' });
   const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const categories = [
@@ -102,6 +103,8 @@ const Forum = () => {
   };
 
   const handleCreatePost = async () => {
+    if (isSubmitting) return; // Prevent double submission
+    
     if (!newPost.title || !newPost.content || !newPost.author_name) {
       toast({
         title: "Missing Information",
@@ -111,6 +114,7 @@ const Forum = () => {
       return;
     }
 
+    setIsSubmitting(true);
     try {
       const { error } = await supabase
         .from('forum_posts')
@@ -133,6 +137,8 @@ const Forum = () => {
         description: "Failed to create post",
         variant: "destructive"
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -219,9 +225,9 @@ const Forum = () => {
                     rows={6}
                   />
                   <div className="flex gap-2">
-                    <Button onClick={handleCreatePost}>
+                    <Button onClick={handleCreatePost} disabled={isSubmitting}>
                       <Send className="h-4 w-4 mr-2" />
-                      Post
+                      {isSubmitting ? 'Posting...' : 'Post'}
                     </Button>
                     <Button variant="outline" onClick={() => setShowNewPostForm(false)}>
                       Cancel

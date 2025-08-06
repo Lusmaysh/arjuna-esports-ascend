@@ -44,10 +44,17 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="arjuna-esports-theme">
-      <TooltipProvider>
+const App = () => {
+  // Preload critical resources for better performance
+  useResourcePreloader([
+    { href: '/placeholder.svg', as: 'image' },
+    { href: '/favicon.ico', as: 'image' }
+  ]);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="dark" storageKey="arjuna-esports-theme">
+        <TooltipProvider>
         <Helmet>
           <title>Arjuna Esports - Platform Turnamen Esports Terdepan di Indonesia</title>
           <meta name="description" content="Bergabunglah dengan Arjuna Esports, platform turnamen esports terbesar di Indonesia. Ikuti turnamen Mobile Legends, PUBG Mobile, Free Fire, dan game esports lainnya dengan hadiah jutaan rupiah." />
@@ -92,6 +99,7 @@ const App = () => (
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;
