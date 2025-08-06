@@ -269,6 +269,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      increment_like_count: {
+        Args: { post_id: string }
+        Returns: undefined
+      }
+      increment_reply_count: {
+        Args: { post_id: string }
+        Returns: undefined
+      }
       refresh_all_tournament_statuses: {
         Args: Record<PropertyKey, never>
         Returns: undefined
