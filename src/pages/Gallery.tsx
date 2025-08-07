@@ -8,6 +8,8 @@ import { Camera, Play, Search, Filter } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { usePagePrefetch } from '@/hooks/usePagePrefetch';
+import GalleryDetailModal from '@/components/GalleryDetailModal';
 
 interface GalleryItem {
   id: string;
@@ -25,7 +27,12 @@ const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { toast } = useToast();
+
+  // Prefetch related pages
+  usePagePrefetch(['Tournaments', 'Forum', 'Community']);
 
   const categories = [
     { value: 'all', label: 'All Media' },
@@ -170,7 +177,15 @@ const Gallery = () => {
                       )}
                       <div className="flex items-center justify-between text-xs text-muted-foreground">
                         <span>{new Date(item.created_at).toLocaleDateString()}</span>
-                        <Button variant="ghost" size="sm" className="h-auto p-1">
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="h-auto p-1"
+                          onClick={() => {
+                            setSelectedItem(item);
+                            setIsModalOpen(true);
+                          }}
+                        >
                           View
                         </Button>
                       </div>
@@ -191,6 +206,12 @@ const Gallery = () => {
           </div>
         </section>
       </main>
+      
+      <GalleryDetailModal 
+        item={selectedItem}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       
       <Footer />
     </div>

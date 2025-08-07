@@ -4,7 +4,8 @@ import HeroSection from '@/components/HeroSection';
 import TournamentShowcase from '@/components/TournamentShowcase';
 import StorySection from '@/components/StorySection';
 import Footer from '@/components/Footer';
-import { useResourcePreloader, useRoutePrefetch } from "@/hooks/useResourcePreloader";
+import { useResourcePreloader } from "@/hooks/useResourcePreloader";
+import { usePagePrefetch } from "@/hooks/usePagePrefetch";
 
 const Dashboard = () => {
   // Preload critical resources
@@ -14,7 +15,7 @@ const Dashboard = () => {
   ]);
 
   // Prefetch likely next routes
-  useRoutePrefetch(['Tournaments', 'Community', 'TournamentServices']);
+  usePagePrefetch(['Tournaments', 'Community', 'TournamentServices', 'Gallery', 'Forum']);
 
   return (
     <div className="min-h-screen bg-background text-foreground">

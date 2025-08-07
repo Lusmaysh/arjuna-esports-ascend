@@ -10,6 +10,8 @@ import { MessageCircle, Heart, Clock, Send, Plus, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { usePagePrefetch } from '@/hooks/usePagePrefetch';
+import { ForumReplyForm } from '@/components/ForumReplyForm';
 
 interface ForumPost {
   id: string;
@@ -43,7 +45,11 @@ const Forum = () => {
   const [newPost, setNewPost] = useState({ title: '', content: '', category: 'general', author_name: '' });
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showReplyForm, setShowReplyForm] = useState<Record<string, boolean>>({});
   const { toast } = useToast();
+
+  // Prefetch related pages
+  usePagePrefetch(['Gallery', 'Tournaments', 'Community']);
 
   const categories = [
     { value: 'all', label: 'All Categories' },
@@ -140,6 +146,39 @@ const Forum = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleLike = async (postId: string) => {
+    try {
+      const { error } = await supabase.rpc('increment_like_count', { post_id: postId });
+      if (error) throw error;
+      
+      // Update local state
+      setPosts(prevPosts => 
+        prevPosts.map(post => 
+          post.id === postId 
+            ? { ...post, likes_count: post.likes_count + 1 }
+            : post
+        )
+      );
+      
+      toast({
+        title: "Success",
+        description: "Post liked!"
+      });
+    } catch (error) {
+      console.error('Error liking post:', error);
+      toast({
+        title: "Error",
+        description: "Failed to like post",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleReplyAdded = () => {
+    fetchPosts();
+    setShowReplyForm({});
   };
 
   const filteredPosts = posts.filter(post => {
@@ -272,16 +311,39 @@ const Forum = () => {
                     <CardContent>
                       <p className="text-muted-foreground mb-4">{post.content}</p>
                       
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Heart className="h-4 w-4" />
-                          {post.likes_count} likes
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <button 
+                            onClick={() => handleLike(post.id)}
+                            className="flex items-center gap-1 hover:text-primary transition-colors"
+                          >
+                            <Heart className="h-4 w-4" />
+                            {post.likes_count} likes
+                          </button>
+                          <div className="flex items-center gap-1">
+                            <MessageCircle className="h-4 w-4" />
+                            {post.replies_count} replies
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <MessageCircle className="h-4 w-4" />
-                          {post.replies_count} replies
-                        </div>
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          onClick={() => setShowReplyForm(prev => ({ ...prev, [post.id]: !prev[post.id] }))}
+                        >
+                          <MessageCircle className="h-4 w-4 mr-2" />
+                          Reply
+                        </Button>
                       </div>
+
+                      {/* Reply Form */}
+                      {showReplyForm[post.id] && (
+                        <div className="mt-4 pt-4 border-t">
+                          <ForumReplyForm 
+                            postId={post.id}
+                            onReplyAdded={handleReplyAdded}
+                          />
+                        </div>
+                      )}
 
                       {/* Replies */}
                       {replies[post.id] && replies[post.id].length > 0 && (

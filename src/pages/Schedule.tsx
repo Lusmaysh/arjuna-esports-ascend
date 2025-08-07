@@ -4,9 +4,17 @@ import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useState } from 'react';
+import { usePagePrefetch } from '@/hooks/usePagePrefetch';
+import ScheduleDetailModal from '@/components/ScheduleDetailModal';
 
 const Schedule = () => {
   const navigate = useNavigate();
+  const [selectedMatch, setSelectedMatch] = useState<typeof upcomingMatches[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Prefetch related pages
+  usePagePrefetch(['Tournaments', 'Gallery', 'Community']);
 
   const upcomingMatches = [
     {
@@ -82,7 +90,14 @@ const Schedule = () => {
                     </div>
                     
                     <div className="text-right">
-                      <Button size="sm" variant="outline">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => {
+                          setSelectedMatch(match);
+                          setIsModalOpen(true);
+                        }}
+                      >
                         Lihat Detail
                       </Button>
                     </div>
@@ -130,6 +145,12 @@ const Schedule = () => {
           </div>
         </div>
       </div>
+
+      <ScheduleDetailModal 
+        match={selectedMatch}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
 
       <Footer />
     </div>
