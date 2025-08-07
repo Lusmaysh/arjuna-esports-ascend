@@ -103,14 +103,14 @@ const Community = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               Bergabunglah dengan komunitas esports terbesar Indonesia. Connect, compete, dan conquer bersama!
             </p>
-            <div className="bg-muted/20 p-4 rounded-lg max-w-md mx-auto">
+            {/*<div className="bg-muted/20 p-4 rounded-lg max-w-md mx-auto">
               <p className="text-sm text-muted-foreground">Database Status: {dbTest}</p>
-            </div>
+            </div>*/}
           </div>
         </section>
 
         {/* Community Stats */}
-        <section className="py-20 px-6 bg-muted/5">
+        <section className="py-0 px-6 bg-muted/5">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {communityStats.map((stat, index) => {
