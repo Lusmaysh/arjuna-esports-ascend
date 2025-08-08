@@ -96,39 +96,41 @@ const TournamentShowcase = () => {
         </div>
 
         {/* Tournament Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="flex items-center gap-1.5 sm:gap-2 bg-card/50 p-1.5 rounded-xl backdrop-blur-sm border border-border/50">
-              <button
-                  onClick={() => setActiveTab('upcoming')}
-                  className={`px-4 sm:px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap ${
-                      activeTab === 'upcoming' 
-                          ? 'bg-primary text-primary-foreground shadow-lg' 
-                          : 'text-muted-foreground hover:bg-white/10'
-                  }`}
-              >
-                  Upcoming
-              </button>
-              <button
-                  onClick={() => setActiveTab('live')}
-                  className={`px-4 sm:px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap ${
-                      activeTab === 'live' 
-                          ? 'bg-primary text-primary-foreground shadow-lg' 
-                          : 'text-muted-foreground hover:bg-white/10'
-                  }`}
-              >
-                  Live Now
-              </button>
-              <button
-                  onClick={() => setActiveTab('past')}
-                  className={`px-4 sm:px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap ${
-                      activeTab === 'past' 
-                          ? 'bg-primary text-primary-foreground shadow-lg' 
-                          : 'text-muted-foreground hover:bg-white/10'
-                  }`}
-              >
-                  Past Events
-              </button>
-          </div>
+        <div className="flex justify-start sm:justify-center overflow-x-auto mb-12 pb-4">
+            {/* flex-shrink-0 mencegah container ini menyusut */}
+            <div className="flex-shrink-0 flex items-center gap-2 bg-card/50 p-1.5 rounded-xl backdrop-blur-sm border border-border/50">
+                {/* Tombol-tombol sekarang bisa memiliki padding yang lebih nyaman */}
+                <button
+                    onClick={() => setActiveTab('upcoming')}
+                    className={`px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap text-sm ${
+                        activeTab === 'upcoming' 
+                            ? 'bg-primary text-primary-foreground shadow-lg' 
+                            : 'text-muted-foreground hover:bg-white/10'
+                    }`}
+                >
+                    Upcoming
+                </button>
+                <button
+                    onClick={() => setActiveTab('live')}
+                    className={`px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap text-sm ${
+                        activeTab === 'live' 
+                            ? 'bg-primary text-primary-foreground shadow-lg' 
+                            : 'text-muted-foreground hover:bg-white/10'
+                    }`}
+                >
+                    Live Now
+                </button>
+                <button
+                    onClick={() => setActiveTab('past')}
+                    className={`px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap text-sm ${
+                        activeTab === 'past' 
+                            ? 'bg-primary text-primary-foreground shadow-lg' 
+                            : 'text-muted-foreground hover:bg-white/10'
+                    }`}
+                >
+                    Past Events
+                </button>
+            </div>
         </div>
 
         {/* Content based on active tab */}
