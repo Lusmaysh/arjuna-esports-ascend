@@ -148,7 +148,18 @@ const Forum = () => {
     }
   };
 
+  const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
+
   const handleLike = async (postId: string) => {
+    if (likedPosts.has(postId)) {
+      toast({
+        title: "Already Liked",
+        description: "You have already liked this post",
+        variant: "destructive"
+      });
+      return;
+    }
+
     try {
       const { error } = await supabase.rpc('increment_like_count', { post_id: postId });
       if (error) throw error;
@@ -161,6 +172,9 @@ const Forum = () => {
             : post
         )
       );
+      
+      // Track liked posts
+      setLikedPosts(prev => new Set([...prev, postId]));
       
       toast({
         title: "Success",
@@ -315,9 +329,12 @@ const Forum = () => {
                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           <button 
                             onClick={() => handleLike(post.id)}
-                            className="flex items-center gap-1 hover:text-primary transition-colors"
+                            className={`flex items-center gap-1 hover:text-primary transition-colors ${
+                              likedPosts.has(post.id) ? 'text-primary' : ''
+                            }`}
+                            disabled={likedPosts.has(post.id)}
                           >
-                            <Heart className="h-4 w-4" />
+                            <Heart className={`h-4 w-4 ${likedPosts.has(post.id) ? 'fill-current' : ''}`} />
                             {post.likes_count} likes
                           </button>
                           <div className="flex items-center gap-1">
