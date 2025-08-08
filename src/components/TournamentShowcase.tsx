@@ -97,37 +97,37 @@ const TournamentShowcase = () => {
 
         {/* Tournament Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="bg-card/50 p-2 rounded-xl backdrop-blur-sm border border-border/50">
-            <button
-              onClick={() => setActiveTab('upcoming')}
-              className={`px-6 py-3 rounded-lg font-orbitron font-bold transition-all ${
-                activeTab === 'upcoming' 
-                  ? 'bg-primary text-primary-foreground' 
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Upcoming
-            </button>
-            <button
-              onClick={() => setActiveTab('live')}
-              className={`px-6 py-3 rounded-lg font-orbitron font-bold transition-all ${
-                activeTab === 'live' 
-                  ? 'bg-primary text-primary-foreground' 
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Live Now
-            </button>
-            <button
-              onClick={() => setActiveTab('past')}
-              className={`px-6 py-3 rounded-lg font-orbitron font-bold transition-all ${
-                activeTab === 'past' 
-                  ? 'bg-primary text-primary-foreground' 
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Past Events
-            </button>
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-card/50 p-1.5 rounded-xl backdrop-blur-sm border border-border/50">
+              <button
+                  onClick={() => setActiveTab('upcoming')}
+                  className={`px-4 sm:px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap ${
+                      activeTab === 'upcoming' 
+                          ? 'bg-primary text-primary-foreground shadow-lg' 
+                          : 'text-muted-foreground hover:bg-white/10'
+                  }`}
+              >
+                  Upcoming
+              </button>
+              <button
+                  onClick={() => setActiveTab('live')}
+                  className={`px-4 sm:px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap ${
+                      activeTab === 'live' 
+                          ? 'bg-primary text-primary-foreground shadow-lg' 
+                          : 'text-muted-foreground hover:bg-white/10'
+                  }`}
+              >
+                  Live Now
+              </button>
+              <button
+                  onClick={() => setActiveTab('past')}
+                  className={`px-4 sm:px-5 py-2 rounded-lg font-orbitron font-bold transition-all whitespace-nowrap ${
+                      activeTab === 'past' 
+                          ? 'bg-primary text-primary-foreground shadow-lg' 
+                          : 'text-muted-foreground hover:bg-white/10'
+                  }`}
+              >
+                  Past Events
+              </button>
           </div>
         </div>
 
