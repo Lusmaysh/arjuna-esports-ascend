@@ -339,12 +339,12 @@ const Admin = () => {
       <main className="pt-20">
         <section className="py-12 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
               <div>
                 <h1 className="text-3xl font-bold font-orbitron mb-2">Tournament Admin</h1>
                 <p className="text-muted-foreground">Manage tournaments and their details</p>
               </div>
-              <div className="flex gap-4">
+              <div className="flex flex-col md:flex-row gap-4">
                 <Button
                   onClick={() => refreshMutation.mutate()}
                   disabled={refreshMutation.isPending}
