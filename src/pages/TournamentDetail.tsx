@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useResourcePreloader, useRoutePrefetch } from '@/hooks/useResourcePreloader';
 import { OptimizedImage } from '@/components/OptimizedImage';
+import MobileLegendsInfo from '@/components/MobileLegendsInfo';
 
 const TournamentDetail = () => {
   const { id: tournamentId } = useParams();
@@ -304,6 +305,7 @@ const TournamentDetail = () => {
             </Card>
           </div>
         </section>
+        <MobileLegendsInfo />
       </main>
       
       <Footer />

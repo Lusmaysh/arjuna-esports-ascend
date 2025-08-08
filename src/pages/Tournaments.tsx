@@ -122,7 +122,7 @@ const Tournaments = () => {
               onClick={handleRefreshStatuses}
               disabled={refreshMutation.isPending}
               variant="outline"
-              className="mb-8"
+              className="mb-0"
             >
               <RefreshCw className={`h-4 w-4 mr-2 ${refreshMutation.isPending ? 'animate-spin' : ''}`} />
               {refreshMutation.isPending ? 'Memperbarui Status...' : 'Perbarui Status Turnamen'}
@@ -131,7 +131,7 @@ const Tournaments = () => {
         </section>
 
         {/* Tournaments Grid */}
-        <section className="py-20 px-6 bg-muted/5">
+        <section className="px-6 bg-muted/5">
           <div className="max-w-7xl mx-auto">
             {sortedTournaments && sortedTournaments.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
