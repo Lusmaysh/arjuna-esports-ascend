@@ -402,7 +402,8 @@ const Admin = () => {
             </div>
 
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="w-full flex overflow-x-auto sm:grid sm:grid-cols-4 justify-start">
+              {/* <TabsList className="grid w-full grid-cols-4"> */}
                 <TabsTrigger value="tournaments" className="flex items-center gap-2">
                   <Trophy className="h-4 w-4" />
                   Tournaments
@@ -424,12 +425,12 @@ const Admin = () => {
               {/* Tournaments Tab */}
               <TabsContent value="tournaments">
                 <Card>
-                  <CardHeader className="flex flex-row items-center justify-between">
+                  <CardHeader className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
                     <div>
-                      <CardTitle>Tournament Management</CardTitle>
-                      <CardDescription>Create and manage tournaments</CardDescription>
+                      <CardTitle className="text-3xl font-bold font-orbitron mb-2 justify-between">Tournament Management</CardTitle>
+                      <CardDescription className="text-muted-foreground">Create and manage tournaments</CardDescription>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex flex-col md:flex-row">
                       <Button onClick={() => refreshMutation.mutate()} disabled={refreshMutation.isPending} variant="outline">
                         <RefreshCw className={`h-4 w-4 mr-2 ${refreshMutation.isPending ? 'animate-spin' : ''}`} />
                         Refresh Status
@@ -496,10 +497,10 @@ const Admin = () => {
               {/* Gallery Tab */}
               <TabsContent value="gallery">
                 <Card>
-                  <CardHeader className="flex flex-row items-center justify-between">
+                  <CardHeader className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
                     <div>
-                      <CardTitle>Gallery Management</CardTitle>
-                      <CardDescription>Manage tournament gallery images</CardDescription>
+                      <CardTitle className="text-3xl font-bold font-orbitron mb-2 justify-between">Gallery Management</CardTitle>
+                      <CardDescription >Manage tournament gallery images</CardDescription>
                     </div>
                     <Button onClick={() => handleOpenDialog('gallery')}>
                       <Plus className="h-4 w-4 mr-2" />
@@ -540,9 +541,9 @@ const Admin = () => {
               {/* Forum Tab */}
               <TabsContent value="forum">
                 <Card>
-                  <CardHeader className="flex flex-row items-center justify-between">
+                  <CardHeader className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
                     <div>
-                      <CardTitle>Forum Management</CardTitle>
+                      <CardTitle className="text-3xl font-bold font-orbitron mb-2 justify-between">Forum Management</CardTitle>
                       <CardDescription>Manage forum posts</CardDescription>
                     </div>
                     <Button onClick={() => handleOpenDialog('forum')}>
@@ -601,9 +602,9 @@ const Admin = () => {
               {/* News Tab */}
               <TabsContent value="news">
                 <Card>
-                  <CardHeader className="flex flex-row items-center justify-between">
+                  <CardHeader className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
                     <div>
-                      <CardTitle>News Management</CardTitle>
+                      <CardTitle className="text-3xl font-bold font-orbitron mb-2 justify-between">News Management</CardTitle>
                       <CardDescription>Manage news articles and updates</CardDescription>
                     </div>
                     <Button onClick={() => handleOpenDialog('news')}>
