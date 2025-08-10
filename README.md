@@ -74,7 +74,11 @@ Kontribusi sangat diterima—silakan fork repo, buat branch baru, dan kirim pull
 
 ## 👤 Kontributor
 
-- Syamsul Hidayat – Fullstack Developer (GitHub: [Lusmaysh](https://github.com/Lusmaysh))
+* Syamsul Hidayat – Fullstack Developer (GitHub: [Lusmaysh](https://github.com/Lusmaysh))
+
+### Thanks to all the people who have contributed
+
+[![contributors](https://contributors-img.web.app/image?repo=Lusmaysh/arjuna-esports-ascend)](https://github.com/Lusmaysh/arjuna-esports-ascend/graphs/contributors)
 
 ---
 
