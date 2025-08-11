@@ -403,7 +403,6 @@ const Admin = () => {
 
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <TabsList className="w-full flex overflow-x-auto sm:grid sm:grid-cols-4 justify-start">
-              {/* <TabsList className="grid w-full grid-cols-4"> */}
                 <TabsTrigger value="tournaments" className="flex items-center gap-2">
                   <Trophy className="h-4 w-4" />
                   Tournaments

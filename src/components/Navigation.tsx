@@ -42,6 +42,11 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" onClick={handleScrollToTop}>
             <div className="flex items-center">
+              {/* <img 
+                src="/favicon.ico" 
+                alt="ARJUNA Logo" 
+                className="h-8 w-8 mr-3" 
+              /> */}
               <div className="font-orbitron text-2xl font-black">
                 <span className="gradient-text">ARJUNA</span>
                 <span className="text-foreground ml-2"></span>
@@ -50,7 +55,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
@@ -90,7 +95,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
               className="text-foreground"
@@ -103,7 +108,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
+          <div className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
