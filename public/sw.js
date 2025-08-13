@@ -12,73 +12,82 @@ const API_CACHE_PATTERNS = [
   /.*\.supabase\.co\/rest\/v1\/tournaments.*/,
 ];
 
+// Install: cache static assets
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(STATIC_CACHE))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    await cache.addAll(STATIC_CACHE);
+    self.skipWaiting();
+  })());
 });
 
+// Activate: clean old caches
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
-  );
+  event.waitUntil((async () => {
+    const cacheNames = await caches.keys();
+    await Promise.all(
+      cacheNames.map(name => {
+        if (name !== CACHE_NAME) {
+          return caches.delete(name);
+        }
+      })
+    );
+    self.clients.claim();
+  })());
 });
 
+// Fetch: handle API & static assets
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Cache static assets
-  if (request.method === 'GET') {
-    // API caching strategy
-    if (API_CACHE_PATTERNS.some(pattern => pattern.test(request.url))) {
-      event.respondWith(
-        caches.open(CACHE_NAME).then(cache => {
-          return cache.match(request).then(cached => {
-            if (cached) {
-              // Serve from cache and update in background
-              fetch(request).then(response => {
-                if (response.status === 200) {
-                  cache.put(request, response.clone());
-                }
-              }).catch(() => {});
-              return cached;
-            }
-            
-            // Fetch and cache
-            return fetch(request).then(response => {
-              if (response.status === 200) {
-                cache.put(request, response.clone());
-              }
-              return response;
-            });
-          });
-        })
-      );
-      return;
-    }
+  if (request.method !== 'GET') return;
 
-    // Static assets caching
-    if (url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/)) {
-      event.respondWith(
-        caches.match(request).then(cached => {
-          return cached || fetch(request).then(response => {
-            const cache = caches.open(CACHE_NAME);
-            cache.then(c => c.put(request, response.clone()));
-            return response;
-          });
-        })
-      );
-    }
+  // API caching strategy (stale-while-revalidate)
+  if (API_CACHE_PATTERNS.some(pattern => pattern.test(request.url))) {
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cached = await cache.match(request);
+
+      if (cached) {
+        // Update in background
+        fetch(request).then(async response => {
+          if (response.ok) {
+            await cache.put(request, response.clone());
+          }
+        }).catch(() => {});
+        return cached;
+      }
+
+      try {
+        const response = await fetch(request);
+        if (response.ok) {
+          await cache.put(request, response.clone());
+        }
+        return response;
+      } catch {
+        return cached || new Response('Offline', { status: 503 });
+      }
+    })());
+    return;
+  }
+
+  // Static assets caching (cache-first)
+  if (url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/)) {
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cached = await cache.match(request);
+      if (cached) return cached;
+
+      try {
+        const response = await fetch(request);
+        if (response.ok) {
+          await cache.put(request, response.clone());
+        }
+        return response;
+      } catch {
+        return new Response('Offline', { status: 503 });
+      }
+    })());
   }
 });
