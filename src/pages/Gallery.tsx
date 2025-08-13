@@ -8,7 +8,6 @@ import { Camera, Play, Search, Filter } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { usePagePrefetch } from '@/hooks/usePagePrefetch';
 import GalleryDetailModal from '@/components/GalleryDetailModal';
 
 interface GalleryItem {
@@ -30,9 +29,6 @@ const Gallery = () => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { toast } = useToast();
-
-  // Prefetch related pages
-  usePagePrefetch(['Tournaments', 'Forum', 'Community']);
 
   const categories = [
     { value: 'all', label: 'All Media' },

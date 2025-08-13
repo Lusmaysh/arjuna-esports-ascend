@@ -5,16 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useState } from 'react';
-import { usePagePrefetch } from '@/hooks/usePagePrefetch';
 import ScheduleDetailModal from '@/components/ScheduleDetailModal';
 
 const Schedule = () => {
   const navigate = useNavigate();
   const [selectedMatch, setSelectedMatch] = useState<typeof upcomingMatches[0] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Prefetch related pages
-  usePagePrefetch(['Tournaments', 'Gallery', 'Community']);
 
   const upcomingMatches = [
     {

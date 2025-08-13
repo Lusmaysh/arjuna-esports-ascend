@@ -10,7 +10,6 @@ import { MessageCircle, Heart, Clock, Send, Plus, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { usePagePrefetch } from '@/hooks/usePagePrefetch';
 import { ForumReplyForm } from '@/components/ForumReplyForm';
 
 interface ForumPost {
@@ -47,9 +46,6 @@ const Forum = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showReplyForm, setShowReplyForm] = useState<Record<string, boolean>>({});
   const { toast } = useToast();
-
-  // Prefetch related pages
-  usePagePrefetch(['Gallery', 'Tournaments', 'Community']);
 
   const categories = [
     { value: 'all', label: 'All Categories' },

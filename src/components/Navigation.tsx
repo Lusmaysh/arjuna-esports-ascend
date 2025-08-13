@@ -3,8 +3,17 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Trophy, Calendar, Users, DollarSign, LayoutDashboard, Newspaper, ShoppingCart, MessageCircle, Camera } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
+import { useResourcePreloader } from "@/hooks/useResourcePreloader";
+import { usePagePrefetch } from "@/hooks/usePagePrefetch";
 
 const Navigation = () => {
+  // useResourcePreloader([
+  //   { href: '/placeholder.svg', as: 'image' },
+  //   { href: 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap', as: 'style' }
+  // ]);
+
+  usePagePrefetch(['Dashboard', 'Tournaments', 'Community', 'TournamentServices', 'Gallery', 'Forum', 'Schedule', 'HelpCenter', 'ContactUs', 'PrivacyPolicy', 'TermsOfService', 'CookiePolicy', 'TournamentDetail', 'Rankings', 'NewsUpdates', 'VisiMisi', 'Admin']);
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
